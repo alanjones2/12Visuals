@@ -23,7 +23,10 @@ ax = weather.plot.line(x='Month', y = 'Tmin',  color = 'lightgrey', ax=ax)
 st.pyplot(fig)
 
 st.subheader("A plot of the mean with shaded area between max and min")
-plt.fill_between(weather['Month'], weather['Tmax'],weather['Tmin'], color='lightgrey', alpha=0.5)
+plt.fill_between(weather['Month'], 
+                 weather['Tmax'],
+                 weather['Tmin'], 
+                 color='lightgrey')
 
 ax.get_legend().set_visible(False)
 ax.set_ylabel('Temperature Range °C')
