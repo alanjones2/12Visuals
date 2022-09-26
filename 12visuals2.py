@@ -17,3 +17,5 @@ col1.table(temps)
 
 st.subheader("st.dataframe")
 st.dataframe(temps)
+
+

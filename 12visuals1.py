@@ -59,12 +59,7 @@ ax2.text(0.2, 0.55, caption2,
         verticalalignment='top', horizontalalignment='left',
         color='darkgrey', fontsize=6)
 
-ax2.spines['right'].set_visible(False)
-ax2.spines['left'].set_visible(False)
-ax2.spines['bottom'].set_visible(False)
-ax2.spines['top'].set_visible(False)
-plt.xticks([])
-plt.yticks([])
+ax2.axis('off')
 
 st.pyplot(fig2)
 
@@ -83,11 +78,6 @@ ax3.text(0.5, 0.2, caption2,
         verticalalignment='top', horizontalalignment='center',
         color='lightblue', fontsize=6)
 
-ax3.spines['right'].set_visible(False)
-ax3.spines['left'].set_visible(False)
-ax3.spines['bottom'].set_visible(False)
-ax3.spines['top'].set_visible(False)
-plt.xticks([])
-plt.yticks([])
+ax3.axis('off')
 
 st.pyplot(fig3)
