@@ -5,8 +5,8 @@ import matplotlib.pyplot as plt
 
 
 temps = pd.DataFrame()
-temps['Day'] = ('Yesterday', 'Today')
-temps['Temperature'] = (24,29)
+temps['Year'] = ('2012', '2022')
+temps['Temperature'] = (24.2,27.2)
 
 st.subheader("st.table")
 st.table(temps)
@@ -17,5 +17,3 @@ col1.table(temps)
 
 st.subheader("st.dataframe")
 st.dataframe(temps)
-
-
