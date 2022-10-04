@@ -4,15 +4,17 @@ import streamlit as st
 import matplotlib.pyplot as plt
 
 # Set up variables
-days = ['Yesterday','Today']
-temps = [24,29]
-caption = f"Today's temperature was {temps[1]}°C"
-caption2 =  f"That's {temps[1]-temps[0]}° up from yesterday"
+years = ['2012','2022']
+temps = [24.2,27.2]
+caption = f"The maximum temperature in July 2022 was {temps[1]}°C"
+caption2 =  f"That's {temps[1]-temps[0]}° up from 2012"
+
+st.title("London Maximum Temperatures in July - 2022 v. 2012")
 
 # Create a bar chart
 st.markdown("## _Data rendered as a bar chart_")
 fig, ax = plt.subplots()
-plt.bar(days,temps)
+plt.bar(years,temps)
 plt.suptitle(caption, fontweight = 'bold')
 plt.title(caption2)
 st.pyplot(fig)
