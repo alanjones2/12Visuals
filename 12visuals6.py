@@ -3,30 +3,35 @@ import streamlit as st
 import pandas as pd
 import matplotlib.pyplot as plt
 
+st.header("Slope graph")
+
+st.subheader("Here is the data")
 df = pd.DataFrame()
-df['year']=[2000,2020]
-df['London']=(20,25)
-df['Manchester']=(18,20)
+df['year']=[2012,2022]
+df['London']=(24.2,27.2)
+df['Wick']=(14.8,17.3)
 
 st.table(df)
 
+st.subheader("A Slopegraph as a line graph")
 fig, ax = plt.subplots()
 
 ax = df.plot(x='year', color = ('red', 'blue'), ax=ax)
 ax = df.plot.scatter(x='year',y='London', color= 'red', ax=ax)
-df.plot.scatter(x='year',y='Manchester', color = 'blue', ax=ax)
+df.plot.scatter(x='year',y='Wick', color = 'blue', ax=ax)
 
-plt.xlim(1995,2025)
-plt.xticks([2000, 2020])
+plt.xlim(2010,2024)
+plt.xticks(df['year'])
 ax.set_ylabel('')
 st.pyplot(fig)
 
-ax.text(df.year[0] -8, df.London[0], df.columns[1])
+st.subheader("A more conventionally styled Slopegraph")
+ax.text(df.year[0] -5, df.London[0], df.columns[1])
 ax.text(df.year[0] -2.5,df.London[0], f'{df.London[0]}°C')
 ax.text(df.year[1] +1, df.London[1],f'{df.London[1]}°C')
-ax.text(df.year[0] -8, df.Manchester[0], df.columns[2])
-ax.text(df.year[0] -2.5, df.Manchester[0],f'{df.Manchester[0]}°C')
-ax.text(df.year[1] +1, df.Manchester[1],f'{df.Manchester[1]}°C')
+ax.text(df.year[0] -5, df.Wick[0], df.columns[2])
+ax.text(df.year[0] -2.5, df.Wick[0],f'{df.Wick[0]}°C')
+ax.text(df.year[1] +1, df.Wick[1],f'{df.Wick[1]}°C')
 
 ax.spines['right'].set_visible(False)
 ax.spines['left'].set_visible(False)
