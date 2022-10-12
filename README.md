@@ -1,6 +1,6 @@
 This folder contains the code and data for the article:
 
-# 12 Essential Visualizations and How to Implement Them - part 1
+# [12 Essential Visualizations and How to Implement Them - part 1](https://towardsdatascience.com/12-essential-visualizations-and-how-to-implement-them-part-1-41e40400a740)
 
 In which we look at how to create the 12 most useful graphs and charts with Python, Matplotlib and Streamlit.
 
