@@ -21,6 +21,11 @@ medals.plot.bar(x='Country', ax=ax)
 st.pyplot(fig)
 
 fig, ax = plt.subplots()
+medals.plot.bar(x='Country', y = ['Gold','Silver','Bronze'],ax=ax)
+st.pyplot(fig)
+
+
+fig, ax = plt.subplots()
 medals.plot.barh(x='Country', ax=ax)
 st.pyplot(fig)
 
