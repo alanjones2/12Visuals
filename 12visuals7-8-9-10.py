@@ -30,11 +30,11 @@ medals.plot.barh(x='Country', ax=ax)
 st.pyplot(fig)
 
 fig, ax = plt.subplots()
-medals.plot.bar(x='Country', stacked = True, ax=ax)
+medals.plot.bar(x='Country', y = ['Gold','Silver','Bronze'], stacked = True, ax=ax)
 st.pyplot(fig)
 
 fig, ax = plt.subplots()
-medals.plot.barh(x='Country', stacked = True, ax=ax)
+medals.plot.barh(x='Country', y = ['Gold','Silver','Bronze'], stacked = True, ax=ax)
 st.pyplot(fig)
 
 st.subheader('The zero baseline problem')
