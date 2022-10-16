@@ -43,7 +43,8 @@ st.subheader('Last, a square area chart')
 a = [0]*100
 b = np.array(a).reshape((10,10))
 
-# add a 2 by 3 rectangle of 1s representing csncer sufferers
+# add a 2 by 3 rectangle of 1s representing cancer sufferers
+
 for i in range(8,10):
     for j in range(7,10):
         b[i,j] = 1

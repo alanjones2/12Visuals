@@ -6,5 +6,7 @@ In which we look at how to create the 12 most useful graphs and charts with Pyth
 
 All of the data can be found in the data folder and each visual has it own python file called 12visualsx.py, where _x_ is the number of the visual as defined in the article.
 
+A Jupyter Notebook of all 12 visuals is in 12visuals.ipynb
+
 If you find this content useful, please consider this... <br/><br/>
 <a href='https://ko-fi.com/M4M64THKG' target='_blank'><img height='36' style='border:0px;height:36px;' src='https://cdn.ko-fi.com/cdn/kofi2.png?v=2' border='0' alt='Buy Me a Coffee at ko-fi.com' /></a>
