@@ -2,4 +2,5 @@ streamlit
 matplotlib
 pandas
 numpy
+seaborn
 waterfall-ax
