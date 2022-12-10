@@ -8,6 +8,8 @@ weather =  pd.read_csv('data/london2018.csv')
 # Create a mean value
 weather['Tmean'] = (weather['Tmax'] + weather['Tmin'])/2
 
+weather.to_csv('data/london2018-2.csv')
+
 st.subheader("Weather data table")
 st.table(weather)
 
