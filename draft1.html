@@ -369,29 +369,51 @@ fig
                 around that mean - you can use the same technique to show confidence levels.</p>
             <p>First we read in the data. It contains various monthly readings for temperature, hours of
                 sunshine and rainfall.</p>
-            <p><code>Python
-weather =  pd.read_csv('data/london2018.csv')
-weather['Tmean'] = (weather['Tmax'] + weather['Tmin'])/2</code></p>
-            <p>It looks like this:
-                <img width="25%" alt="" src="https://github.com/alanjones2/12Visuals/raw/main/images/weatherdf.png">
-            </p>
-            <p>It didn't have the <em>mean</em> column originally - we created it on the second line of
-                code, above.</p>
+
             <p>Now, the simple line plot.</p>
-            <p><code>Python
+            <py-repl id="my-repl" std-out="output6" std-err="err-div6">
+import pandas as pd
+import matplotlib.pyplot as plt
+from pyodide.http import open_url
+
+url='https://raw.githubusercontent.com/alanjones2/12Visuals/main/data/london2018-2.csv'
+url_content = open_url(url)
+weather = pd.read_csv(url_content)
+
 fig, ax = plt.subplots()
 ax = weather.plot.line(x='Month', y = 'Tmean', ax=ax)
-st.pyplot(fig)</code>
-                A very straightforward line plot of the mean temperature using Matplotlib.</p>
-            <p><img width="25%" alt="" src="https://github.com/alanjones2/12Visuals/raw/main/images/lineplotmean.png">
+fig
+
+            </py-repl>
+            <div id="output6" class="border border-info p-4 m-4"></div>
+            <div id="err-div6" class="m-4"></div>
+            <button type="button" class="btn btn-secondary m-4" onclick="document.getElementById('output6').innerHTML='';
+            document.getElementById('err-div6').innerHTML='';">
+                Clear Output
+            </button>
+            <p>
+                There we should have a very straightforward line plot of 
+                the mean temperature.</p>
             </p>
-            <p>And creating mulitple plots in the same figure is just a matter of creating new axes for
-                those plots.</p>
-            <p>```` Python
-                ax = weather.plot.line(x='Month', y = 'Tmax', color = 'lightgrey', ax=ax)
-                ax = weather.plot.line(x='Month', y = 'Tmin', color = 'lightgrey', ax=ax)</p>
-            <p>st.pyplot(fig)
-                ````</p>
+            <p>
+                And creating mulitple plots in the same figure is just a matter of creating new axes for
+                those plots. (Note that the block of code below relies on the previous one
+                so make sure that you have run this first.)
+            </p>
+            
+            <py-repl id="my-repl" std-out="output7" std-err="err-div7">
+
+ax = weather.plot.line(x='Month', y = 'Tmax', color = 'lightgrey', ax=ax)
+ax = weather.plot.line(x='Month', y = 'Tmin', color = 'lightgrey', ax=ax)
+fig
+            </py-repl>
+            <div id="output7" class="border border-info p-4 m-4"></div>
+            <div id="err-div7" class="m-4"></div>
+            <button type="button" class="btn btn-secondary m-4" onclick="document.getElementById('output7').innerHTML='';
+            document.getElementById('err-div7').innerHTML='';">
+                Clear Output
+            </button>
+
             <p>The code above adds two more axes for the minimum and maximum temperatures - which I've
                 coloured differently to the <em>mean</em> plot - and then replots the figure.</p>
             <p><img width="25%" alt=""
