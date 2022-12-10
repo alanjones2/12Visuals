@@ -308,6 +308,7 @@ fig
 
             <p>You can achieve a similar chart using the <code>imshow()</code> function in matplotlib (see
                 the downloadable code for an example).</p>
+
             <h2>4. Scatterplot</h2>
             <p>Scatterplots are used to show the relationship between two variables. The example below uses
                 a data file that records weather data for each month in London in 2018 (see note 4) it
@@ -318,15 +319,27 @@ fig
                 relationship.</p>
             <p><img width="25%" alt="" src="https://github.com/alanjones2/12Visuals/raw/main/images/scatter.png"></p>
             <p>The code below uses the Matplotlib scatter plot to create the chart.</p>
-            <p>```` Python
-                import streamlit as st
-                import pandas as pd
-                import matplotlib.pyplot as plt</p>
-            <p>weather = pd.read_csv('data/london2018.csv')</p>
-            <p>fig, ax = plt.subplots()
-                weather.plot.scatter(x='Rain', y='Sun', ax=ax)
-                st.pyplot(fig)
-                ````</p>
+
+            <py-repl id="my-repl" std-out="output5" std-err="err-div5">
+            
+import pandas as pd
+import matplotlib.pyplot as plt
+from pyodide.http import open_url
+
+url='https://raw.githubusercontent.com/alanjones2/12Visuals/main/data/london2018.csv'
+url_content = open_url(url)
+weather = pd.read_csv(url_content)
+fig, ax = plt.subplots()
+weather.plot.scatter(x='Rain', y='Sun', ax=ax)
+fig
+
+            </py-repl>
+            <div id="output5" class="border border-info p-4 m-4"></div>
+            <div id="err-div5" class="m-4"></div>
+            <button type="button" class="btn btn-secondary m-4" onclick="document.getElementById('output4').innerHTML='';
+        document.getElementById('err-div4').innerHTML='';">
+                Clear Output
+            </button>
             <h2>5. Line</h2>
             <p>Line graphs are used for continuous data and, often, for time series data, too.</p>
             <p>Using the same weather data as above, we are going to look at three different line graphs.
