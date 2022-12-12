@@ -1,0 +1,51 @@
+<h2>12. Square area</h2>
+<p>total population: 100</p>
+<p>cancer sufferers: 6</p>
+<p>cancer sufferers who eat bacon in excess: 1</p>
+<p>First a vertical bar chart</p>
+<p><img alt="" src="https://github.com/alanjones2/12Visuals/raw/main/images/12cancerbar.png"></p>
+<p>```` Python
+fig, ax = plt.subplots(figsize=(8,5))</p>
+<p>plt.bar(['Cancer-free','Contracted cancer by chance','Contracted cancer and is a Bacon Eater'],[94,6,1])
+plt.xticks(rotation = 45)</p>
+<p>ax.set_ylabel('Percentage')
+ax.set_title('Occurance of Bowel Cancer in a Population')</p>
+<p>st.pyplot(fig)
+````</p>
+<p>Second, a stacked bar that serves as an area chart</p>
+<p><img alt="" src="https://github.com/alanjones2/12Visuals/raw/main/images/12cancerstackarea.png"></p>
+<p><code>Python
+fig, ax = plt.subplots()
+ax.bar('Instances of Cancer', 94,label='Cancer-Free')
+ax.bar('Instances of Cancer', 6, label='Contracted cancer by chance')
+ax.bar('Instances of Cancer', 1, label='Contracted cancer and is a Bacon Eater')
+st.pyplot(fig)</code></p>
+<p>Last, a square area chart</p>
+<p><img alt="" src="https://github.com/alanjones2/12Visuals/raw/main/images/12cancersquarearea.png"></p>
+<p>```` Python</p>
+<h1>construct a 2D array of 0s - total pop</h1>
+<p>a = [0]*100
+b = np.array(a).reshape((10,10))</p>
+<h1>add a 2 by 3 rectangle of 1s representing csncer sufferers</h1>
+<p>for i in range(8,10):
+    for j in range(7,10):
+        b[i,j] = 1</p>
+<h1>add a single cell with value 2</h1>
+<h1>representing the number of cancer sufferers</h1>
+<h1>who eat too much bacon</h1>
+<p>b[9,9] = 2</p>
+<h1>Plot the grid as a heat map in Seaborn</h1>
+<p>fig, ax = plt.subplots(figsize=(8,5))
+sns.heatmap(b, 
+            linewidths=0.5, 
+            yticklabels=False,
+            xticklabels=False, 
+            cmap=['lightblue','royalblue','midnightblue'],
+            ax=ax)</p>
+<h1>Customize legend</h1>
+<p>colorbar = ax.collections[0].colorbar 
+colorbar.set_ticks([0.5,1,1.5])
+colorbar.set_ticklabels(['Cancer-free','Contracted cancer by chance','Contracted cancer and is a Bacon Eater'])</p>
+<p>ax.set_title('Occurance of Bowel Cancer in a Population')
+st.pyplot(fig)
+````</p>
