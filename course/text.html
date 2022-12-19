@@ -6,23 +6,6 @@
             <p>The weather in London, UK, seems to getting hotter in the Summer. The maximum temperature in
                 July 2022 was 27.2 degrees Celsius, which is quite hot for the UK. In 2012 it was 24.2
                 degrees.</p>
-            <p>Let's set up some variables that represent the situation in London that we can use in a number
-                of different formats.</p>
-
-            <py-repl id="my-repl" std-out="output" std-err="output">
-#Set up variables
-years = ['2012','2022']
-temps = [24.2,27.2]
-caption = f"The maximum temperature in July 2022 was {temps[1]}°C"
-caption2 = f"That's {temps[1]-temps[0]}° up from 2012"
-print("Done")
-            </py-repl>
-            <div id="output" class="border border-info p-4 m-4"></div>
-            <div id="err-div" class="m-4"></div>
-            <button type="button" class="btn btn-secondary m-4" onclick="document.getElementById('output').innerHTML='';
-                                document.getElementById('err-div').innerHTML='';">
-                Clear Output
-            </button>
 
             <p>Now, look at the bar graph, below - it shows a temperature change from one year to another.
                 And while it's clear that the temperature went up a few degrees, you can't clearly see
@@ -41,6 +24,8 @@ print("Done")
             <p>
                 Run the code below to see the figure that we have created and feel free to change some of the 
                 code to achieve a different effect (maybe the font size, colors or x/y coordinates). 
+                (Remember, to run the code hover the mouse pointer over the code window and click the green play button at 
+                the bottom right.)
             </p>
             
             <py-repl id="my-repl" std-out="output1" std-err="output1">
@@ -116,4 +101,7 @@ fig3
                 Clear Output
             </button>
 
-            <p>This is a bit bolder and more eye-catching than the other one.</p>
+            <p>This is a bit bolder and more eye-catching than the previous one.</p>
+            <p> But let's move on to the next visual</p>
+        
+            

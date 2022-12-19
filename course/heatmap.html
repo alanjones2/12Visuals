@@ -6,21 +6,21 @@
 
             <p>
                 The figure below shows the relative global temperatures over the last 150 years or so and is
-                taken from my article <a
-                    href="https://towardsdatascience.com/topical-plots-global-warming-6b5fb80a0371">Topical
-                    Plots: Global Warming Heatmaps
+                taken from my article 
+                <a href="https://towardsdatascience.com/topical-plots-global-warming-6b5fb80a0371">
+                    Topical Plots: Global Warming Heatmaps
                 </a>.
             </p>
 
             <p>
                 One of the easiest ways of creating a heatmap is with the Seaborn library. You can see from
                 the code below that Seaborn simply take a Pandas dataframe as a parameter and displays
-                the appropiate map as a matplotlib chart.
+                the appropiate map as a Matplotlib chart.
+
+                Run the code to see the heatmap.
             </p>
 
             <py-repl id="my-repl" std-out="output4" std-err="output4">
-
-
 import pandas as pd
 import matplotlib.pyplot as plt
 from pyodide.http import open_url
@@ -35,7 +35,6 @@ import seaborn as sns
 fig, ax = plt.subplots()
 sns.heatmap(gwdec)
 fig
-
             </py-repl>
             <div id="output4" class="border border-info p-4 m-4"></div>
             <div id="err-div4" class="m-4"></div>

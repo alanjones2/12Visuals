@@ -10,8 +10,8 @@
                 dataframe will give a good rendition of a table. 
             </p>
             <p>
-                PyScript renders a simple version of a table as we can see below. A better 
-                version could be created using HTML (we won't go into that here).
+                Here, we are using PyScript which can render a simple version of a table as we can see below. In this environment
+                a better version could be created using a combination of Python and HTML (but we won't go into that here).
             </p>
             <p>Using the same data as above, here is the code for displaying the data as a table in PyScript. </p>
             <py-repl id="my-repl" std-out="output3" std-err="output3">
@@ -20,7 +20,6 @@ temps = pd.DataFrame()
 temps['Year'] = ('2012', '2022')
 temps['Temperature'] = (24.2,27.2)
 temps
-
             </py-repl>
             <div id="output3" class="border border-info p-4 m-4"></div>
             <div id="err-div3" class="m-4"></div>
@@ -29,7 +28,7 @@ temps
                 Clear Output
             </button>
 
-            <p>The Streamlit and Jupyter versions are rather better, e.g.</p>
+            <p>The Streamlit and Jupyter representations give a rather better result, e.g.</p>
 
             <div class="row">
                 <div class="col-sm-4 p-4 m-4 bg-white">
@@ -44,5 +43,6 @@ temps
                     </p>
                 </div>
             </div>
-            Unfortunately, we cannot run Streamlit or Jupyter, here.
+            Unfortunately, we cannot run Streamlit or Jupyter, here, but we can move on to the other charts that can
+            be produced using Matplotlib.
 
