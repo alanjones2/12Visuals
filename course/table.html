@@ -14,19 +14,26 @@
                 a better version could be created using a combination of Python and HTML (but we won't go into that here).
             </p>
             <p>Using the same data as above, here is the code for displaying the data as a table in PyScript. </p>
-            <py-repl id="my-repl" std-out="output3" std-err="output3">
+            <div class="row">
+                <div class="col-sm-7">
+
+                    <py-repl id="my-repl" std-out="output3" std-err="output3">
 import pandas as pd
 temps = pd.DataFrame()
 temps['Year'] = ('2012', '2022')
 temps['Temperature'] = (24.2,27.2)
 temps
-            </py-repl>
-            <div id="output3" class="border border-info p-4 m-4"></div>
-            <div id="err-div3" class="m-4"></div>
-            <button type="button" class="btn btn-secondary m-4" onclick="document.getElementById('output3').innerHTML='';
-        document.getElementById('err-div3').innerHTML='';">
-                Clear Output
-            </button>
+                </py-repl>
+                </div>
+                <div class="col-sm-5">
+                    <div id="output3" class="border border-info p-4 m-4"></div>
+                    <div id="err-div3" class="m-4"></div>
+                    <button type="button" class="btn btn-secondary m-4" onclick="document.getElementById('output3').innerHTML='';
+                        document.getElementById('err-div3').innerHTML='';">
+                        Clear Output
+                    </button>
+                </div>
+            </div>
 
             <p>The Streamlit and Jupyter representations give a rather better result, e.g.</p>
 

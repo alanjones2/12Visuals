@@ -18,6 +18,10 @@
         </p>
 
         <p>Now, the simple line plot.</p>
+    </div>
+</div>
+<div class="row">
+    <div class="col-sm-7">
 
         <py-repl id="my-repl" std-out="output6" std-err="err-div6">
 import pandas as pd
@@ -31,17 +35,16 @@ fig
         </py-repl>
     </div>
     <div class="col-sm-5 p-4">
-        <div id="output6"></div>
+        <div id="output6" class="m-4"></div>
+        <div id="err-div6"></div>
+        <button type="button" class="btn btn-info m-4" onclick="document.getElementById('output6').innerHTML='';
+            document.getElementById('err-div6').innerHTML='';">
+            Clear Output
+        </button>
     </div>
 </div>
-<div id="err-div6" class="m-4"></div>
-<button type="button" class="btn btn-secondary m-4" onclick="document.getElementById('output6').innerHTML='';
-            document.getElementById('err-div6').innerHTML='';">
-    Clear Output
-</button>
 <div class="row">
     <div class="col-sm-7">
-
         <p>
             There we should have a very straightforward line plot of
             the mean temperature.</p>
@@ -51,6 +54,11 @@ fig
             those plots. (Note that the block of code below relies on the previous one
             so make sure that you have run this first.)
         </p>
+    </div>
+</div>
+<div class="row">
+    <div class="col-sm-7">
+
         <py-repl id="my-repl" std-out="output7" std-err="err-div7">
 ax = weather.plot.line(x='Month', y = 'Tmax', color = 'lightgrey', ax=ax)
 ax = weather.plot.line(x='Month', y = 'Tmin', color = 'lightgrey', ax=ax)
@@ -58,14 +66,15 @@ fig
         </py-repl>
     </div>
     <div class="col-sm-5">
-        <div id="output7"></div>
+        <div id="output7" class="m-4"></div>
+        <div id="err-div7"></div>
+        <button type="button" class="btn btn-info m-4" onclick="document.getElementById('output7').innerHTML='';
+                    document.getElementById('err-div7').innerHTML='';">
+            Clear Output
+        </button>
     </div>
 </div>
-<div id="err-div7" class="m-4"></div>
-<button type="button" class="btn btn-secondary m-4" onclick="document.getElementById('output7').innerHTML='';
-            document.getElementById('err-div7').innerHTML='';">
-    Clear Output
-</button>
+
 <div class="row">
     <div class="col-sm-7">
 
@@ -84,6 +93,11 @@ fig
             (Again, you should make sure you have run the two previous
             code blocks before running this one.)
         </p>
+    </div>
+</div>
+<div class="row">
+    <div class="col-sm-7">
+
         <py-repl id="my-repl" std-out="output8" std-err="err-div8">
 plt.fill_between(weather['Month'],
     weather['Tmax'],
@@ -97,14 +111,15 @@ fig
         </py-repl>
     </div>
     <div class="col-sm-5">
-        <div id="output8"></div>
+        <div id="output8" class="m-4"></div>
+
+        <div id="err-div8"></div>
+        <button type="button" class="btn btn-info m-4" onclick="document.getElementById('output8').innerHTML='';
+                    document.getElementById('err-div8').innerHTML='';">
+            Clear Output
+        </button>
     </div>
 </div>
-<div id="err-div8" class="m-4"></div>
-<button type="button" class="btn btn-secondary m-4" onclick="document.getElementById('output8').innerHTML='';
-            document.getElementById('err-div8').innerHTML='';">
-    Clear Output
-</button>
 <div class="row">
 
     <div class="col-sm-7">
@@ -122,6 +137,10 @@ fig
             value plus 5%, and the lower one the centre value minus 5%.
             For example:
         </p>
+    </div>
+</div>
+<div class="row">
+    <div class="col-sm-7">
         <py-repl id="my-repl" std-out="output9" std-err="err-div9">
 import matplotlib.pyplot as plt
 import pandas as pd
@@ -142,13 +161,13 @@ fig2
         </py-repl>
     </div>
     <div class="col-sm-5">
-        <div id="output9"></div>
+        <div id="output9" class="m-4"></div>
+        <div id="err-div9" class="m-4"></div>
+        <button type="button" class="btn btn-info m-4" onclick="document.getElementById('output9').innerHTML='';
+                            document.getElementById('err-div9').innerHTML='';">
+            Clear Output
+        </button>
     </div>
 </div>
-<div id="err-div9" class="m-4"></div>
-<button type="button" class="btn btn-secondary m-4" onclick="document.getElementById('output9').innerHTML='';
-                    document.getElementById('err-div9').innerHTML='';">
-    Clear Output
-</button>
 
 <p>Try changing the code above to make the confidence levels +/- 10%</p>

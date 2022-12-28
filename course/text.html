@@ -9,7 +9,7 @@
                         July 2022 was 27.2 degrees Celsius, which is quite hot for the UK. In 2012 it was 24.2
                         degrees.</p>
 
-                    <p>Now, look at the bar graph, below - it shows a temperature change from one year to another.
+                    <p>Now, look at the bar graph - it shows a temperature change from one year to another.
                         And while it's clear that the temperature went up a few degrees, you can't clearly see
                         exactly how much or precisely what those temperatures are.</p>
                     
@@ -37,7 +37,7 @@
             <div class="row">
                 <div class="col-sm-7">
                             
-                    <py-repl id="my-repl" std-out="output1" std-err="output1">
+                    <py-repl id="my-repl" std-out="output1" std-err="err-div1">
 
 import matplotlib.pyplot as plt
 
@@ -68,19 +68,20 @@ fig2
                 </div>
                 <div class = "col-sm-5">
                     <div id="output1" class="border border-info p-4 m-4"></div>
+                    <div id="err-div1" class="m-4"></div>
+                    <button type="button" class="btn btn-info m-4" onclick="document.getElementById('output1').innerHTML='';
+                            document.getElementById('err-div1').innerHTML='';">
+                        Clear Output
+                    </button>
                 </div>
-            <div id="err-div1" class="m-4"></div>
-            <button type="button" class="btn btn-info m-4" onclick="document.getElementById('output1').innerHTML='';
-        document.getElementById('err-div1').innerHTML='';">
-                Clear Output
-            </button>
+
             </div>
             <div class="row">
                 <div class="col-sm-7">
 
                     <p>Here is a different version.</p>
 
-                    <py-repl id="my-repl" std-out="output2" std-err="output2">
+                    <py-repl id="my-repl" std-out="output2" std-err="err-div2">
 
 import matplotlib.pyplot as plt
 
@@ -112,12 +113,13 @@ fig3
                 </div>
                 <div class = "col-sm-5">
                     <div id="output2" class="border border-info p-4 m-4"></div>
+                    <div id="err-div2" class="m-4"></div>
+                    <button type="button" class="btn btn-info m-4" onclick="document.getElementById('output2').innerHTML='';
+                        document.getElementById('err-div2').innerHTML='';">
+                        Clear Output
+                    </button>
                 </div>
-                <div id="err-div2" class="m-4"></div>
-                <button type="button" class="btn btn-info m-4" onclick="document.getElementById('output2').innerHTML='';
-                    document.getElementById('err-div2').innerHTML='';">
-                    Clear Output
-                </button>
+
             </div>
             <div>
                 <p>This is a bit bolder and more eye-catching than the previous one.</p>
