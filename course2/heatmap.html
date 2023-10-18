@@ -1,0 +1,29 @@
+            <h2>3. Heatmap</h2>
+            <p>
+                A heatmap is a figure that uses colour rather than numbers to highlight value differences in
+                a table.
+            </p>
+
+            <p>
+                The figure below shows the relative global temperatures over the last 150 years or so and is
+                taken from my article 
+                <a href="https://towardsdatascience.com/topical-plots-global-warming-6b5fb80a0371">
+                    Topical Plots: Global Warming Heatmaps
+                </a>.
+            </p>
+
+            <p>
+                One of the easiest ways of creating a heatmap is with the Seaborn library. You can see from
+                the code below that Seaborn simply take a Pandas dataframe as a parameter and displays
+                the appropiate map as a Matplotlib chart.
+
+                Run the code to see the heatmap.
+            </p>
+
+            <py-script>
+                utils.codeElement("heatmap1", codefile="./code/heatmap1.py")
+            </py-script>
+            <div id="heatmap1"></div>
+            
+
+            <p>You can achieve a similar chart using the <code>imshow()</code> function in Matplotlib.</p>

@@ -1,0 +1,173 @@
+
+<h2>5. Line</h2>
+<div class="row">
+    <div class="col-sm-7">
+
+        <p>Line graphs are used for continuous data and, often, for time series data, too.</p>
+        <p>Using the same weather data as above, we are going to look at three different line graphs.</p>
+        <p>
+            First, we'll plot the mean temperature over the year, then we'll see how we can place
+            multiple plots in the same figure by plotting mean, maximum and minimum temperatures.
+            Finally, in the third chart we will see how we can show a range of values by plotting
+            the mean temperature with shading around it to indicate the range of maximum and minimum
+            around that mean - you can use the same technique to show confidence levels.
+        </p>
+        <p>
+            First we read in the data. It contains various monthly readings for temperature, hours of
+            sunshine and rainfall.
+        </p>
+
+        <p>Now, the simple line plot.</p>
+    </div>
+</div>
+<div class="row">
+    <div class="col-sm-7">
+
+        <py-repl id="my-repl" std-out="output6" std-err="err-div6">
+import pandas as pd
+import matplotlib.pyplot as plt
+
+weather = pd.read_csv('./london2018-2.csv')
+
+fig, ax = plt.subplots()
+ax = weather.plot.line(x='Month', y = 'Tmean', ax=ax)
+fig
+        </py-repl>
+    </div>
+    <div class="col-sm-5 p-4">
+        <div id="output6" class="m-4"></div>
+        <div id="err-div6"></div>
+        <button type="button" class="btn btn-info m-4" onclick="document.getElementById('output6').innerHTML='';
+            document.getElementById('err-div6').innerHTML='';">
+            Clear Output
+        </button>
+    </div>
+</div>
+<div class="row">
+    <div class="col-sm-7">
+        <p>
+            There we should have a very straightforward line plot of
+            the mean temperature.</p>
+        </p>
+        <p>
+            And creating multiple plots in the same figure is just a matter of creating new axes for
+            those plots. (Note that the block of code below relies on the previous one
+            so make sure that you have run this first.)
+        </p>
+    </div>
+</div>
+<div class="row">
+    <div class="col-sm-7">
+
+        <py-repl id="my-repl" std-out="output7" std-err="err-div7">
+ax = weather.plot.line(x='Month', y = 'Tmax', color = 'lightgrey', ax=ax)
+ax = weather.plot.line(x='Month', y = 'Tmin', color = 'lightgrey', ax=ax)
+fig
+        </py-repl>
+    </div>
+    <div class="col-sm-5">
+        <div id="output7" class="m-4"></div>
+        <div id="err-div7"></div>
+        <button type="button" class="btn btn-info m-4" onclick="document.getElementById('output7').innerHTML='';
+                    document.getElementById('err-div7').innerHTML='';">
+            Clear Output
+        </button>
+    </div>
+</div>
+
+<div class="row">
+    <div class="col-sm-7">
+
+        <p>
+            The code above adds two more axes for the minimum and maximum temperatures - which I've
+            coloured differently to the <em>mean</em> plot - and then replots the figure.</p>
+        <p>
+            You can see that this shows us the range of temperatures but we can do better than that.
+            It would be clearer if the range were shaded.
+            <!-- as in the figure.
+            <img width="50%" alt="" src="https://github.com/alanjones2/12Visuals/raw/main/images/lineplotshaded.png">-->
+        </p>
+
+        <p>
+            We can achieve this using the Matplotlib function <code>fill_between()</code> as in following code.
+            (Again, you should make sure you have run the two previous
+            code blocks before running this one.)
+        </p>
+    </div>
+</div>
+<div class="row">
+    <div class="col-sm-7">
+
+        <py-repl id="my-repl" std-out="output8" std-err="err-div8">
+plt.fill_between(weather['Month'],
+    weather['Tmax'],
+    weather['Tmin'],
+    color='lightgrey')
+
+ax.get_legend().set_visible(False)
+ax.set_ylabel('Temperature Range °C')
+
+fig
+        </py-repl>
+    </div>
+    <div class="col-sm-5">
+        <div id="output8" class="m-4"></div>
+
+        <div id="err-div8"></div>
+        <button type="button" class="btn btn-info m-4" onclick="document.getElementById('output8').innerHTML='';
+                    document.getElementById('err-div8').innerHTML='';">
+            Clear Output
+        </button>
+    </div>
+</div>
+<div class="row">
+
+    <div class="col-sm-7">
+
+        <p>
+            The fill colour is set to <code>lightgrey</code> so it blends in the the upper and lower
+            plots. Also the legend is hidden because the top and bottom plots are no longer visible.
+            Instead of the legend, the y axis has a label to show what it is that we are
+            trying to represent.
+        </p>
+        <p>
+            As you can see this would be a very suitable representation of confidence levels. You
+            could, for example, create the upper and lower plots using a fixed percentage of the
+            original one. So the upper plot line could take the value of the centre
+            value plus 5%, and the lower one the centre value minus 5%.
+            For example:
+        </p>
+    </div>
+</div>
+<div class="row">
+    <div class="col-sm-7">
+        <py-repl id="my-repl" std-out="output9" std-err="err-div9">
+import matplotlib.pyplot as plt
+import pandas as pd
+
+df2 = pd.DataFrame({'col':[0,1,2,3,4,5,6,7,8,9,10]})
+
+fig2, ax2 = plt.subplots()
+df2.plot.line(ax=ax2)
+
+plt.fill_between(df2.index,
+    df2['col']*1.05,
+    df2['col']*0.95,
+    color='lightblue')
+
+ax2.set_ylabel('Values with 5% confidence levels')
+
+fig2
+        </py-repl>
+    </div>
+    <div class="col-sm-5">
+        <div id="output9" class="m-4"></div>
+        <div id="err-div9" class="m-4"></div>
+        <button type="button" class="btn btn-info m-4" onclick="document.getElementById('output9').innerHTML='';
+                            document.getElementById('err-div9').innerHTML='';">
+            Clear Output
+        </button>
+    </div>
+</div>
+
+<p>Try changing the code above to make the confidence levels +/- 10%</p>

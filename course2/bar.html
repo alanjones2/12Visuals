@@ -1,0 +1,55 @@
+<h2>Bar charts</h2>
+<p>CNK suggests that bar charts are often avoided because they are common. But because they are common, they are easily understood by your audience, meaning that they spend less brain power interpreting your graphics and more on reading the data. So, we should embrace bar charts as a visualiztion when appropriate not avoid them.</p>
+<p>They are also simple to create as they are included in most visualization libraries.</p>
+<p>CNK divides bar charts into 4 categories, vertical, horizontal, stacked vertical amd stacked horizontal, and we will look at them in turn.</p>
+<p>But first a word about ...</p>
+<p><img alt="" src="https://github.com/alanjones2/12Visuals/raw/main/images/zerobaselinebad.png"></p>
+<p><img alt="" src="https://github.com/alanjones2/12Visuals/raw/main/images/zerobaselinegood.png"></p>
+<p>We are going to use a medals table for the 2022 Winter Olypics as our data for the various bar charts that we will look at. So here is the preliminary code that we will need.</p>
+<p>```` Python
+import streamlit as st
+import pandas as pd
+import matplotlib.pyplot as plt</p>
+<p>medals =  pd.read_csv('data/2022WinterOlympics.csv')
+````</p>
+<p><img alt="" src="https://github.com/alanjones2/12Visuals/raw/main/images/medalstable.png"></p>
+<p><em>Medals table for the top 4 countries at the 2022 Winter Olympics - data source, <a href="https://en.wikipedia.org/wiki/2022_Winter_Olympics">Wikipedia</a>, image by author</em></p>
+<h2>7. Vertical bar</h2>
+<p><code>Python
+fig, ax = plt.subplots()
+medals.plot.bar(x='Country', y='Total', ax=ax)
+st.pyplot(fig)</code></p>
+<p><img alt="" src="https://github.com/alanjones2/12Visuals/raw/main/images/totalbarvert.png"></p>
+<p><code>Python
+fig, ax = plt.subplots()
+medals.plot.bar(x='Country', ax=ax)
+st.pyplot(fig)</code>
+<img alt="" src="https://github.com/alanjones2/12Visuals/raw/main/images/top5barvert.png"></p>
+<p>```Python
+fig, ax = plt.subplots()
+medals.plot.bar(x='Country', y = ['Gold','Silver','Bronze'],ax=ax)
+st.pyplot(fig)
+````
+<img alt="" src="https://github.com/alanjones2/12Visuals/raw/main/images/7gsbvertbar.png"></p>
+<h2>8. Horizontal bar</h2>
+<p><code>Python
+fig, ax = plt.subplots()
+medals.plot.barh(x='Country', ax=ax)
+st.pyplot(fig)</code>
+<img alt="" src="https://github.com/alanjones2/12Visuals/raw/main/images/top5barhoriz.png"></p>
+<h2>9. Stacked vertical bar</h2>
+<p><code>Python
+fig, ax = plt.subplots()
+medals.plot.bar(x='Country', 
+                y = ['Gold','Silver','Bronze'],
+                stacked = True, ax=ax)
+st.pyplot(fig)</code></p>
+<p><img alt="" src="https://github.com/alanjones2/12Visuals/raw/main/images/top5barvertstack.png"></p>
+<h2>10. Stacked horizontal bar</h2>
+<p><code>Python
+fig, ax = plt.subplots()
+medals.plot.barh(x='Country', 
+                 y = ['Gold','Silver','Bronze'], 
+                 stacked = True, ax=ax)
+st.pyplot(fig)</code></p>
+<p><img alt="" src="https://github.com/alanjones2/12Visuals/raw/main/images/top5barhorizstack.png"></p>

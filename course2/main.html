@@ -8,7 +8,7 @@
     <script src='https://cdn.plot.ly/plotly-latest.min.js'></script>
 </head>
 
-<body  class = "p5 text-dark">
+<body  class = "p5 text-dark" style="font-size: 1.25rem">
 
 <py-config>
 packages = [ "pandas", "plotly", "matplotlib", "seaborn"]
@@ -19,7 +19,13 @@ to_file = "./london2018-2.csv"
 [[fetch]]
 from = "./data/tempbydecade.csv"
 to_file = "./tempbydecade.csv"
+[[fetch]]
+from = "./utils.py"
+to_file = "./utils.py"
 </py-config>
+<py-script>
+import utils
+</py-script>
 
     <div class="p-4 m-4 bg-light">
         <h1 class="display-3">12 Essential Visuals</h1>
@@ -94,7 +100,7 @@ to_file = "./tempbydecade.csv"
         <div class="col-sm-9 p-4 ml-4 mr-4 mb-4 bg-white">
             
             <div id="content"></div>
-            
+            <!--
             <ul class="navbar navbar-expand-sm m-4 border" style="background-color: lightgray;padding-left: 40%;">
                 <li class="nav-item">
                   <a class="nav-link active" onclick="previousPage()" href="#">< Previous</a>
@@ -106,10 +112,11 @@ to_file = "./tempbydecade.csv"
                     <a class="nav-link active" onclick="nextPage()" href="#">Next ></a>
                 </li>
             </ul>
-
+            -->
         </div>
     </div>
     <script>
+    
         contentIndex = 0;
         contentPages = ["intro.html",
                         "text.html",
@@ -153,9 +160,10 @@ to_file = "./tempbydecade.csv"
 
     <footer class="text-right text-secondary p-4 m-4">
 
-        <i class="m-4">&copy; 2022, Alan Jones</i>
+        <i class="m-4">&copy;  2023, Alan Jones</i>
 
     </footer>
+
 </body>
 
 </html>

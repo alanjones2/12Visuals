@@ -83,3 +83,22 @@ ax3.text(0.5, 0.2, caption2,
 ax3.axis('off')
 
 st.pyplot(fig3)
+
+st.markdown("---")
+
+st.markdown("## _Data rendered as text in an different matplotlib chart_")
+fig3, ax3 = plt.subplots(figsize=(4,2))
+
+ax3.text(0.5, 0.9, '63,000,000',
+        verticalalignment='top', horizontalalignment='center',
+        color='darkblue', fontsize=32, fontweight = 'bold')
+ax3.text(0.5, 0.4, "Earth's Orbit in miles",
+        verticalalignment='top', horizontalalignment='center',
+        color='blue', fontsize=12)
+ax3.text(0.5, 0.2, "That's a lot of miles",
+        verticalalignment='top', horizontalalignment='center',
+        color='lightblue', fontsize=10)
+
+ax3.axis('off')
+
+st.pyplot(fig3)

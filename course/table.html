@@ -17,23 +17,54 @@
             <div class="row">
                 <div class="col-sm-7">
 
-                    <py-repl id="my-repl" std-out="output3" std-err="output3">
+                    <py-repl id="my-repl3" output="output3" stderr="output3">
 import pandas as pd
 temps = pd.DataFrame()
 temps['Year'] = ('2012', '2022')
 temps['Temperature'] = (24.2,27.2)
 temps
+
+import plotly.graph_objects as go
+
+fig = go.Figure(data=[go.Table(header=dict(values=['Year', 'Temperature']),
+                 cells=dict(values=[temps['Year'], temps['Temperature']]))
+                     ])
+
+#fig.update_layout(template="none")
+
+fig
                 </py-repl>
                 </div>
                 <div class="col-sm-5">
-                    <div id="output3" class="border border-info p-4 m-4"></div>
+                    <div id="output3" class="border border-info  pt-4 pb-4 m-1"></div>
                     <div id="err-div3" class="m-4"></div>
-                    <button type="button" class="btn btn-secondary m-4" onclick="document.getElementById('output3').innerHTML='';
+                    <button type="button" class="btn btn-secondary m-1" onclick="document.getElementById('output3').innerHTML='';
                         document.getElementById('err-div3').innerHTML='';">
                         Clear Output
                     </button>
                 </div>
             </div>
+
+
+
+
+                    <py-repl src = "./code/plotlytable2.py" id="my-repl4" output="output4" stderr="output4">
+
+                </py-repl>
+                </div>
+                <div class="col-sm-5">
+                    <div id="output4" class="border border-info  pt-4 pb-4 m-1"></div>
+                    <div id="err-div4" class="m-4"></div>
+                    <button type="button" class="btn btn-secondary m-1" onclick="document.getElementById('output4').innerHTML='';
+                        document.getElementById('err-div4').innerHTML='';">
+                        Clear Output
+                    </button>
+                </div>
+            </div>
+
+
+
+
 
             <p>The Streamlit and Jupyter representations give a rather better result, e.g.</p>
 

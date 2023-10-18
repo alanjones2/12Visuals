@@ -1,0 +1,57 @@
+            <h2>4. Scatterplot</h2>
+            <div class="row">
+                <div class="col-sm-6">
+                    <p> 
+                        Scatterplots are used to show the relationship between two variables. The example below uses
+                        a data file that records weather data for each month in London in 2018. This data set records 
+                        the maximum, minimum and mean temperatures (<i>Tmax</i>, <i>Tmin</i> and <i>Tmean</i>), the rainfall (<i>Rain</i>) 
+                        and the number of hours of sunshine (<i>Sun</i>) for each month.  
+                    </p>
+                    <p>
+                        We'll create a scatter plot that
+                        plots the level of rainfall in millimetres, against the number of hours of sunshine.
+                        Of course, when it is raining the sun is not normally shining, so you would expect to see
+                        fewer hours of sunshine when it rains more. You will notice that the scatter diagram clearly shows this
+                        relationship.</p>
+                    <p>The code below uses the Matplotlib to create the chart.</p>
+                </div>
+                <div class="col-sm-6">
+                    <p>The data looks something like this:
+                        <img width="100%" alt="" src="https://github.com/alanjones2/12Visuals/raw/main/images/weatherdf.png">
+                    </p>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-sm-7">
+
+                    <py-repl id="my-repl" std-out="output5" std-err="err-div5">
+            
+import pandas as pd
+import matplotlib.pyplot as plt
+
+weather = pd.read_csv('./london2018-2.csv')
+fig, ax = plt.subplots()
+weather.plot.scatter(x='Rain', y='Sun', ax=ax)
+fig
+
+                    </py-repl>
+                </div>
+                <div class = "col-sm-5">
+                    <div id="output5" class="m-4"></div>
+                    <div id="err-div5"></div>
+                    <button type="button" class="btn btn-info m-4" onclick="document.getElementById('output5').innerHTML='';
+                        document.getElementById('err-div5').innerHTML='';">
+                        Clear Output
+                    </button>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-sm-7">
+                    <p>
+                        When you have run this code, clear the output and try changing the <code>y</code> parameter to 'Tmean' - that 
+                        will plot rainfall against the mean temperature <code>Tmean</code>. Run it again and you will see that, as you would expect,
+                        the temperature is higher when it is not raining. (If you don't <i>Clear Output</i>)
+                        before running the code again, the new plot will be appended to the old one.)
+                    </p>
+                </div>
+            </div>
