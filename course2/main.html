@@ -4,32 +4,38 @@
     <link rel="stylesheet" href="https://pyscript.net/latest/pyscript.css" />
     <script defer src="https://pyscript.net/latest/pyscript.js"></script>
 
+    <style>
+        .py-repl-run-button {
+            opacity: 1;
+        }
+    </style>
+
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
     <script src='https://cdn.plot.ly/plotly-latest.min.js'></script>
 </head>
 
-<body  class = "p5 text-dark" style="font-size: 1.25rem">
+<body class="p5 text-dark" style="font-size: 1.25rem">
 
-<py-config>
-packages = [ "pandas", "plotly", "matplotlib", "seaborn"]
+    <py-config>
+        packages = [ "pandas", "plotly", "matplotlib", "seaborn"]
 
-[[fetch]]
-from = "./data/london2018-2.csv"
-to_file = "./london2018-2.csv"
-[[fetch]]
-from = "./data/tempbydecade.csv"
-to_file = "./tempbydecade.csv"
-[[fetch]]
-from = "./utils.py"
-to_file = "./utils.py"
-</py-config>
-<py-script>
-import utils
-</py-script>
+        [[fetch]]
+        from = "./data/london2018-2.csv"
+        to_file = "./london2018-2.csv"
+        [[fetch]]
+        from = "./data/tempbydecade.csv"
+        to_file = "./tempbydecade.csv"
+        [[fetch]]
+        from = "./utils.py"
+        to_file = "./utils.py"
+    </py-config>
+    <py-script>
+        import utils
+    </py-script>
 
     <div class="p-4 m-4 bg-light">
         <h1 class="display-3">12 Essential Visuals</h1>
-        <h3 class="pl-2">and how to implement them<span class = "text-secondary"> - an interactive course</span></h3>
+        <h3 class="pl-2">and how to implement them<span class="text-secondary"> - an interactive course</span></h3>
 
         <span class="lead">
             "When I look back over the 150+ visuals that I created for workshops and consulting projects
@@ -40,7 +46,7 @@ import utils
                 <i>Storytelling with Data, a data visualization guide
                     for business professionals
                 </i>
-            </a>
+            </a>(<i>affliate link</i>)
         </span>
     </div>
 
@@ -51,54 +57,71 @@ import utils
                 <h3>Contents</h3>
             </div>
             <div class="row ml-4">
-                
+
                 <ul class="nav flex-column">
-                            <li class="nav-item">
-                              <a class="nav-link active" onclick="getContent(0)" href="#">Introduction</a>
-                            </li>
-                            <li class="nav-item">
-                                <a class="nav-link active" onclick="getContent(1)" href="#">Plain Text</a>
-                            </li>
-                            <li class="nav-item">
-                                <a class="nav-link active" onclick="getContent(2)" href="#">Tables</a>
-                            </li>
-                            <li class="nav-item">
-                                <a class="nav-link active" onclick="getContent(3)" href="#">Heatmaps</a>
-                            </li>
-                            <li class="nav-item">
-                                <a class="nav-link active" onclick="getContent(4)" href="#">Scatter Plots</a>
-                            </li>
-                            <li class="nav-item">
-                                <a class="nav-link active" onclick="getContent(5)" href="#">Line Plots</a>
-                            </li>
-                            <li class="nav-item">
-                                <a class="nav-link active" onclick="getContent(6)" href="#">Slope Diagrams</a>
-                            </li>
-                            <li class="nav-item">
-                                <a class="nav-link active" onclick="getContent(7)" href="#">Bar Charts</a>
-                            </li>
-                            <li class="nav-item">
-                                <a class="nav-link active" onclick="getContent(8)" href="#">Waterfall Charts</a>
-                            </li>
-                            <li class="nav-item">
-                                <a class="nav-link active" onclick="getContent(9)" href="#">Square Area Diagrams</a>
-                            </li>
-                          </ul>
+                    <li class="nav-item">
+                        <a class="nav-link active" onclick="getContent(0)" href="#">Introduction</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link active" onclick="getContent(1)" href="#">Plain Text</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link active" onclick="getContent(2)" href="#">Tables</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link active" onclick="getContent(3)" href="#">Heatmaps</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link active" onclick="getContent(4)" href="#">Scatter Plots</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link active" onclick="getContent(5)" href="#">Line Plots</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link active" onclick="getContent(6)" href="#">Slope Diagrams</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link active" onclick="getContent(7)" href="#">Bar Charts</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link active" onclick="getContent(8)" href="#">Waterfall Charts</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link active" onclick="getContent(9)" href="#">Square Area Diagrams</a>
+                    </li>
+                </ul>
 
 
                 <span class="p-4 m-2 bg-white shadow">
-                    <div class="mr-4 mb-4"> Storytelling with Data and related books by <br/><b>Cole Nussbaumer Knaflic</b>:</div>
-                    <a class="pb-4" href="https://www.amazon.com/Storytelling-Data-Visualization-Business-Professionals/dp/1119002257?crid=1MY1RXSF4T9G3&keywords=knaflic&qid=1670776183&s=books&sprefix=knaflic%2Cstripbooks-intl-ship%2C158&sr=1-2&linkCode=li3&tag=alanjones01-20&linkId=b74126a342676875822ebe699d5be0f9&language=en_US&ref_=as_li_ss_il" target="_blank"><img border="0" src="//ws-na.amazon-adsystem.com/widgets/q?_encoding=UTF8&ASIN=1119002257&Format=_SL250_&ID=AsinImage&MarketPlace=US&ServiceVersion=20070822&WS=1&tag=alanjones01-20&language=en_US" ></a><img src="https://ir-na.amazon-adsystem.com/e/ir?t=alanjones01-20&language=en_US&l=li3&o=1&a=1119002257" width="1" height="1" border="0" alt="" style="border:none !important; margin:0px !important;" />
-                    <a class="pb-4" href="https://www.amazon.com/Storytelling-Data-Cole-Nussbaumer-Knaflic/dp/1119621496?pd_rd_w=JoIxj&content-id=amzn1.sym.7f0cf323-50c6-49e3-b3f9-63546bb79c92&pf_rd_p=7f0cf323-50c6-49e3-b3f9-63546bb79c92&pf_rd_r=CCM82J86MZ3DXR33RQBC&pd_rd_wg=Rcu9K&pd_rd_r=58153b8b-857f-495b-a09e-2d45ccadb4af&pd_rd_i=1119621496&psc=1&linkCode=li3&tag=alanjones01-20&linkId=ada8e72024c73a3a755c589bb276e326&language=en_US&ref_=as_li_ss_il" target="_blank"><img border="0" src="//ws-na.amazon-adsystem.com/widgets/q?_encoding=UTF8&ASIN=1119621496&Format=_SL250_&ID=AsinImage&MarketPlace=US&ServiceVersion=20070822&WS=1&tag=alanjones01-20&language=en_US" ></a><img src="https://ir-na.amazon-adsystem.com/e/ir?t=alanjones01-20&language=en_US&l=li3&o=1&a=1119621496" width="1" height="1" border="0" alt="" style="border:none !important; margin:0px !important;" />
-                    <a class="pb-4" href="https://www.amazon.com/dp/1394160305?psc=1&pd_rd_i=1394160305&pd_rd_w=RqglL&content-id=amzn1.sym.88097cb9-5064-44ef-891b-abfacbc1c44b&pf_rd_p=88097cb9-5064-44ef-891b-abfacbc1c44b&pf_rd_r=NF03HVN3AM1DB9WJA82G&pd_rd_wg=cg0Om&pd_rd_r=630d86df-99af-4479-bf64-5f429f1e61c4&s=books&sp_csd=d2lkZ2V0TmFtZT1zcF9kZXRhaWw&spLa=ZW5jcnlwdGVkUXVhbGlmaWVyPUEyNFEwVzAwMTFFTkZTJmVuY3J5cHRlZElkPUExMDM0NzA0MjRMN1FHNFdUWUVXNiZlbmNyeXB0ZWRBZElkPUEwMzYyMzAxM1FLNVFGUFVQMzIyVyZ3aWRnZXROYW1lPXNwX2RldGFpbCZhY3Rpb249Y2xpY2tSZWRpcmVjdCZkb05vdExvZ0NsaWNrPXRydWU%3D&linkCode=li3&tag=alanjones01-20&linkId=6836246ed71751aa4b6890c0ebe4afe0&language=en_US&ref_=as_li_ss_il" target="_blank"><img border="0" src="//ws-na.amazon-adsystem.com/widgets/q?_encoding=UTF8&ASIN=1394160305&Format=_SL250_&ID=AsinImage&MarketPlace=US&ServiceVersion=20070822&WS=1&tag=alanjones01-20&language=en_US" ></a><img src="https://ir-na.amazon-adsystem.com/e/ir?t=alanjones01-20&language=en_US&l=li3&o=1&a=1394160305" width="1" height="1" border="0" alt="" style="border:none !important; margin:0px !important;" />
+                    <p style="font-size:75%">Advertisement</p>
+                    <div class="mr-4 mb-4"> Storytelling with Data and related books by <br /><b>Cole Nussbaumer
+                            Knaflic</b>:</div>
+                    <a class="pb-4"
+                        href="https://www.amazon.com/Storytelling-Data-Visualization-Business-Professionals/dp/1119002257?crid=1MY1RXSF4T9G3&keywords=knaflic&qid=1670776183&s=books&sprefix=knaflic%2Cstripbooks-intl-ship%2C158&sr=1-2&linkCode=li3&tag=alanjones01-20&linkId=b74126a342676875822ebe699d5be0f9&language=en_US&ref_=as_li_ss_il"
+                        target="_blank"><img border="0"
+                            src="//ws-na.amazon-adsystem.com/widgets/q?_encoding=UTF8&ASIN=1119002257&Format=_SL250_&ID=AsinImage&MarketPlace=US&ServiceVersion=20070822&WS=1&tag=alanjones01-20&language=en_US"></a><img
+                        src="https://ir-na.amazon-adsystem.com/e/ir?t=alanjones01-20&language=en_US&l=li3&o=1&a=1119002257"
+                        width="1" height="1" border="0" alt="" style="border:none !important; margin:0px !important;" />
+                    <a class="pb-4"
+                        href="https://www.amazon.com/Storytelling-Data-Cole-Nussbaumer-Knaflic/dp/1119621496?pd_rd_w=JoIxj&content-id=amzn1.sym.7f0cf323-50c6-49e3-b3f9-63546bb79c92&pf_rd_p=7f0cf323-50c6-49e3-b3f9-63546bb79c92&pf_rd_r=CCM82J86MZ3DXR33RQBC&pd_rd_wg=Rcu9K&pd_rd_r=58153b8b-857f-495b-a09e-2d45ccadb4af&pd_rd_i=1119621496&psc=1&linkCode=li3&tag=alanjones01-20&linkId=ada8e72024c73a3a755c589bb276e326&language=en_US&ref_=as_li_ss_il"
+                        target="_blank"><img border="0"
+                            src="//ws-na.amazon-adsystem.com/widgets/q?_encoding=UTF8&ASIN=1119621496&Format=_SL250_&ID=AsinImage&MarketPlace=US&ServiceVersion=20070822&WS=1&tag=alanjones01-20&language=en_US"></a><img
+                        src="https://ir-na.amazon-adsystem.com/e/ir?t=alanjones01-20&language=en_US&l=li3&o=1&a=1119621496"
+                        width="1" height="1" border="0" alt="" style="border:none !important; margin:0px !important;" />
+                    <a class="pb-4"
+                        href="https://www.amazon.com/dp/1394160305?psc=1&pd_rd_i=1394160305&pd_rd_w=RqglL&content-id=amzn1.sym.88097cb9-5064-44ef-891b-abfacbc1c44b&pf_rd_p=88097cb9-5064-44ef-891b-abfacbc1c44b&pf_rd_r=NF03HVN3AM1DB9WJA82G&pd_rd_wg=cg0Om&pd_rd_r=630d86df-99af-4479-bf64-5f429f1e61c4&s=books&sp_csd=d2lkZ2V0TmFtZT1zcF9kZXRhaWw&spLa=ZW5jcnlwdGVkUXVhbGlmaWVyPUEyNFEwVzAwMTFFTkZTJmVuY3J5cHRlZElkPUExMDM0NzA0MjRMN1FHNFdUWUVXNiZlbmNyeXB0ZWRBZElkPUEwMzYyMzAxM1FLNVFGUFVQMzIyVyZ3aWRnZXROYW1lPXNwX2RldGFpbCZhY3Rpb249Y2xpY2tSZWRpcmVjdCZkb05vdExvZ0NsaWNrPXRydWU%3D&linkCode=li3&tag=alanjones01-20&linkId=6836246ed71751aa4b6890c0ebe4afe0&language=en_US&ref_=as_li_ss_il"
+                        target="_blank"><img border="0"
+                            src="//ws-na.amazon-adsystem.com/widgets/q?_encoding=UTF8&ASIN=1394160305&Format=_SL250_&ID=AsinImage&MarketPlace=US&ServiceVersion=20070822&WS=1&tag=alanjones01-20&language=en_US"></a><img
+                        src="https://ir-na.amazon-adsystem.com/e/ir?t=alanjones01-20&language=en_US&l=li3&o=1&a=1394160305"
+                        width="1" height="1" border="0" alt="" style="border:none !important; margin:0px !important;" />
                 </span>
 
 
-       
+
             </div>
         </div>
-        <div class="col-sm-9 p-4 ml-4 mr-4 mb-4 bg-white">
-            
+        <div class="col-sm-8 p-4 ml-4 mr-4 mb-4 bg-white">
+
             <div id="content"></div>
             <!--
             <ul class="navbar navbar-expand-sm m-4 border" style="background-color: lightgray;padding-left: 40%;">
@@ -116,51 +139,57 @@ import utils
         </div>
     </div>
     <script>
-    
+
         contentIndex = 0;
         contentPages = ["intro.html",
-                        "text.html",
-                        "table.html",
-                        "heatmap.html",
-                        "scatter.html",
-                        "line.html",
-                        "slope.html",
-                        "bar.html",
-                        "waterfall.html",
-                        "square_area.html"
-                        ]
-        async function getContent(i){
+            "text.html",
+            "table.html",
+            "heatmap.html",
+            "scatter.html",
+            "line.html",
+            "slope.html",
+            "bar.html",
+            "waterfall.html",
+            "square_area.html"
+        ]
+        async function getContent(i) {
             let response = await fetch(contentPages[i]);
             if (response.ok) {
-                let result = await response.text();  
-                    document.getElementById("content").innerHTML=result;
+                let result = await response.text();
+                document.getElementById("content").innerHTML = result;
             } else {
                 alert(response.status);
             }
             window.scrollTo(0, 0);
         }
-        function nextPage(){
+        function nextPage() {
             contentIndex++;
-            if (contentIndex >= contentPages.length) contentIndex = contentPages.length-1;
-            getContent(contentIndex); 
+            if (contentIndex >= contentPages.length) contentIndex = contentPages.length - 1;
+            getContent(contentIndex);
         }
-        function previousPage(){
+        function previousPage() {
             contentIndex--;
             if (contentIndex < 0) contentIndex = 0;
-            getContent(contentIndex); 
+            getContent(contentIndex);
         }
-        function firstPage(){
+        function firstPage() {
             contentIndex = 0;
-            getContent(contentIndex); 
+            getContent(contentIndex);
         }
         firstPage();
 
-        
+
     </script>
 
     <footer class="text-right text-secondary p-4 m-4">
-
-        <i class="m-4">&copy;  2023, Alan Jones</i>
+        <i>Please note that all the software in these articles is written for educational purposes and should
+            not necessarily be
+            considered suitable for production code</i>
+        <br />
+        <i>This site contains affliate links. If you purchase an item through such a link I may get a commision
+        but at no cost to you. As an Amazon Associate, I earn from qualifying purchases.</i>
+        <br />
+        <i class="m-4">&copy; 2022, 2023, Alan Jones</i> &nbsp;
 
     </footer>
 

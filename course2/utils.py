@@ -5,12 +5,12 @@ def util(text):
 
 def codeElement(id, codefile):
     code = f"""
-        <py-repl src={codefile} id="{id}" output="{id}" stderr="{id}">
+        <py-repl src={codefile} id="{id}" output="{id}-output" stderr="{id}-err">
         </py-repl>
 
-        <div id="{id}" class="border p-4"></div>
-        <button type="button" class="btn btn-secondary m-1" onclick="document.getElementById('output4').innerHTML='';
-                                document.getElementById('{id}').innerHTML='';">
+        <div id="{id}-output" class="border p-4"></div>
+        <button type="button" class="btn btn-secondary m-1" onclick="document.getElementById('{id}-output').innerHTML='';
+                                document.getElementById('{id}-err').innerHTML='';">
             Clear Output
         </button>
         """

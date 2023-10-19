@@ -1,72 +1,103 @@
-            <h2>6. Slopegraph</h2>
-            <p>A Slopegraph is simply a line graph that conforms a particular style but that only compares
-                two sets of values.</p>
-            <p>According to CNK, "slopegraphs can be useful when you have two time periods or points of
-                comparison and want to quickly show relative increases
-                and decreases".</p>
-            <p>Unfortunately, the slopegraph is not often found in standard visualization libraries, so you
-                could simply use a line graph instead and it should convey the same meaning.</p>
-            <p>I'll carry on with our weather theme, I'm going to create a couple of graphs that display the
-                change in temperature that we saw in the text figure, above, but this time we compare
-                London to Wick, in Scotland:</p>
-            <p><img width="25%" alt="" src="https://github.com/alanjones2/12Visuals/raw/main/images/slopetable.png">
-            </p>
-            <p>This data represents the maximum temperature is two cities in two seperate years. In the
-                following code we draw two plots in the same figure. The first is a simple line graph of
-                the data, then we superimpose a scatter chart with only four points to give us the
-                archetypal blobs at the end of the slopegraph lines.</p>
-            <p>```` Python
-                import streamlit as st
-                import pandas as pd
-                import matplotlib.pyplot as plt</p>
-            <p>st.header("Slope graph")</p>
-            <p>st.subheader("Here is the data")
-                df = pd.DataFrame()
-                df['year']=[2012,2022]
-                df['London']=(24.2,27.2)
-                df['Wick']=(14.8,17.3)</p>
-            <p>st.table(df)</p>
-            <p>st.subheader("A Slopegraph as a line graph")
-                fig, ax = plt.subplots()</p>
-            <p>ax = df.plot(x='year', color = ('red', 'blue'), ax=ax)
-                ax = df.plot.scatter(x='year',y='London', color= 'red', ax=ax)
-                df.plot.scatter(x='year',y='Wick', color = 'blue', ax=ax)</p>
-            <p>plt.xlim(2010,2024)
-                plt.xticks(df['year'])
-                ax.set_ylabel('')
-                st.pyplot(fig)
-                ````
-                It looks reasonably ok but is not the typical form of a slopechart, certainly not the
-                way they are represented in the CNK's book.</p>
-            <p><img width="25%" alt="" src="https://github.com/alanjones2/12Visuals/raw/main/images/slopeline.png"></p>
-            <p>To make a more conventional slopegraph we need to do a bit of manipulation on the matplotlib
-                graph.</p>
-            <p>Here's the type of rendering that CNK has in her book:</p>
-            <p><img width="25%" alt="" src="https://github.com/alanjones2/12Visuals/raw/main/images/slope.png"></p>
-            <p>It's quite different in that the y values, and the legend text, are written at the ends of
-                the lines and the conventional axes are removed.</p>
-            <p>Running this code will display the graph above.</p>
-            <p>```` Python
-                ax.text(df.year[0] -5, df.London[0], df.columns[1])
-                ax.text(df.year[0] -2.5,df.London[0], f'{df.London[0]}°C')
-                ax.text(df.year[1] +1, df.London[1],f'{df.London[1]}°C')
-                ax.text(df.year[0] -5, df.Wick[0], df.columns[2])
-                ax.text(df.year[0] -2.5, df.Wick[0],f'{df.Wick[0]}°C')
-                ax.text(df.year[1] +1, df.Wick[1],f'{df.Wick[1]}°C')</p>
-            <p>ax.spines['right'].set_visible(False)
-                ax.spines['left'].set_visible(False)
-                ax.spines['bottom'].set_visible(False)
-                ax.spines['top'].set_visible(False)</p>
-            <p>ax.xaxis.grid(visible=True, color = 'black')
-                ax.get_yaxis().set_visible(False)</p>
-            <p>ax.get_legend().set_visible(False)</p>
-            <p>st.pyplot(fig)
-                ````
-                The first six lines add the text and values to the endo of the lines, then we remove the
-                splines (the frame of the chart) and finally we add an x-axis grid (which only consists
-                of two lines) and hide the legend.</p>
-            <p>Is that too much effort for a not much different result? I'll let you decide.</p>
-            <h2>Vertical bar</h2>
-            <h2>Horizontal bar</h2>
-            <h2>Stacked vertical bar</h2>
-            <h2>Stacked horizontal bar</h2>
+<h2>6. Slopegraph</h2>
+<p>A Slopegraph is simply a line graph that conforms a particular style and that only compares
+    two sets of values.</p>
+<p>According to CNK, "slopegraphs can be useful when you have two time periods or points of
+    comparison and want to quickly show relative increases
+    and decreases".</p>
+<p>Unfortunately, the slopegraph is not often found in standard visualization libraries, so you
+    could simply use a line graph instead and it should convey the same meaning.</p>
+<p>I'll carry on with our weather theme, I'm going to create a couple of graphs that display the
+    change in temperature that we saw in the text figure, above, but this time we compare
+    London to Wick, in Scotland:</p>
+<p><img width="75%" alt="" src="https://github.com/alanjones2/12Visuals/raw/main/images/slopetable.png">
+</p>
+<p>This data represents the maximum temperature is two cities in two seperate years. In the
+    following code we draw two plots in the same figure. The first is a simple line graph of
+    the data, then we superimpose a scatter chart with only four points to give us the
+    archetypal blobs at the end of the slopegraph lines.</p>
+
+<py-repl id="slope1" output="slope1-output" stderr="slope1-output">
+import pandas as pd
+import matplotlib.pyplot as plt
+df = pd.DataFrame()
+df['year']=[2012,2022]
+df['London']=(24.2,27.2)
+df['Wick']=(14.8,17.3)
+fig, ax = plt.subplots()
+ax = df.plot(x='year', color = ('red', 'blue'), ax=ax)
+ax = df.plot.scatter(x='year',y='London', color= 'red', ax=ax)
+df.plot.scatter(x='year',y='Wick', color = 'blue', ax=ax)
+plt.xlim(2010,2024)
+plt.xticks(df['year'])
+ax.set_ylabel('')
+fig
+
+
+</py-repl>
+
+<div id="slope1-output" class="border p-4"></div>
+
+<button type="button" class="btn btn-secondary m-4" onclick="document.getElementById('slope1-output').innerHTML='';
+                        document.getElementById('slope1-output').innerHTML='';">
+    Clear Output
+</button>
+<p>
+    It looks reasonably ok but is not the typical form of a slopechart, certainly not the
+    way they are represented in the CNK's book.</p>
+<p><img width="25%" alt="" src="https://github.com/alanjones2/12Visuals/raw/main/images/slopeline.png"></p>
+<p>To make a more conventional slopegraph we need to do a bit of manipulation on the matplotlib
+    graph.</p>
+<p>Here's the type of rendering that CNK has in her book:</p>
+<p><img width="25%" alt="" src="https://github.com/alanjones2/12Visuals/raw/main/images/slope.png"></p>
+<p>It's quite different in that the y values, and the legend text, are written at the ends of
+    the lines and the conventional axes are removed.</p>
+<p>Running this code will display the graph above.</p>
+
+<py-repl id="slope2" output="slope2-output" stderr="slope2-output">
+
+import pandas as pd
+import matplotlib.pyplot as plt
+df = pd.DataFrame()
+df['year']=[2012,2022]
+df['London']=(24.2,27.2)
+df['Wick']=(14.8,17.3)
+fig, ax = plt.subplots()
+ax = df.plot(x='year', color = ('red', 'blue'), ax=ax)
+ax = df.plot.scatter(x='year',y='London', color= 'red', ax=ax)
+df.plot.scatter(x='year',y='Wick', color = 'blue', ax=ax)
+plt.xlim(2010,2024)
+plt.xticks(df['year'])
+ax.set_ylabel('')
+
+ax.text(df.year[0] -5, df.London[0], df.columns[1])
+ax.text(df.year[0] -2.5,df.London[0], f'{df.London[0]}°C')
+ax.text(df.year[1] +1, df.London[1],f'{df.London[1]}°C')
+ax.text(df.year[0] -5, df.Wick[0], df.columns[2])
+ax.text(df.year[0] -2.5, df.Wick[0],f'{df.Wick[0]}°C')
+ax.text(df.year[1] +1, df.Wick[1],f'{df.Wick[1]}°C')
+ax.spines['right'].set_visible(False)
+ax.spines['left'].set_visible(False)
+ax.spines['bottom'].set_visible(False)
+ax.spines['top'].set_visible(False)
+ax.xaxis.grid(visible=True, color = 'black')
+ax.get_yaxis().set_visible(False)
+ax.get_legend().set_visible(False)
+
+fig
+
+
+</py-repl>
+
+<div id="slope2-output" class="border p-4"></div>
+
+<button type="button" class="btn btn-secondary m-4" onclick="document.getElementById('slope2-output').innerHTML='';
+                        document.getElementById('slope2-output').innerHTML='';">
+    Clear Output
+</button>
+<p>
+    The first six lines add the text and values to the end of the lines, then we remove the
+    splines (the frame of the chart) and finally we add an x-axis grid (which only consists
+    of two lines) and hide the legend.</p>
+<p>
+    Is that too much effort for a not much different result? I'll let you decide.
+</p>
