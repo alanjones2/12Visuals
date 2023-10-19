@@ -1,131 +1,117 @@
-            <h2>1. Simple text</h2>
-            <div class="row">
-                <div class="col-sm-7">
-                    <p>Sometimes, a graphic isn't necessary,
-                        or even the best option to communicate data. When only a couple values are to be
-                        presented, simple text is fine and may even be better than a graph. Let's take an
-                        example.</p>
-                    <p>The weather in London, UK, seems to getting hotter in the Summer. The maximum temperature in
-                        July 2022 was 27.2 degrees Celsius, which is quite hot for the UK. In 2012 it was 24.2
-                        degrees.</p>
+<h2>1. Simple text</h2>
 
-                    <p>Now, look at the bar graph - it shows a temperature change from one year to another.
-                        And while it's clear that the temperature went up a few degrees, you can't clearly see
-                        exactly how much or precisely what those temperatures are.</p>
-                    
-                    <p>So, let's see how some text only visuals can give us a better idea of what is going on.</p>
-        
-                    <p> The code below is a Mathplotlib chart but with no figure plotted in it - we simply
-                        position text in the right places using <code>ax.text()</code>, where the first two parameters are the x/y coordinates.
-                        We turn of the axes, ticks etc. with the statement
-                        <code>ax3.axis('off')</code>, so that we end up with just the text.
-                        
-                    </p>
-                    <p>
-                        Run the code below to see the figure that we have created and feel free to change some of the 
-                        code to achieve a different effect (maybe the font size, colors or x/y coordinates). 
-                        (Remember, to run the code hover the mouse pointer over the code window and click the green play button at 
-                        the bottom right.)
-                    </p>
-                </div>
-                <div class = "col-sm-5">
-                    <p><img width="100%"
-                        src="https://github.com/alanjones2/12Visuals/raw/main/images/1-bar.png">
-                    </p>
-                </div>
-            </div>
-            <div class="row">
-                <div class="col-sm-7">
-                            
-                    <py-repl id="my-repl1" output="output1" stderr="err-div1">
+<p>Sometimes, a graphic isn't necessary,
+    or even the best option to communicate data. When only a couple values are to be
+    presented, simple text is fine and may even be better than a graph. Let's take an
+    example.</p>
+<p>The weather in London, UK, seems to getting hotter in the Summer. The maximum temperature in
+    July 2022 was 27.2 degrees Celsius, which is quite hot for the UK. In 2012 it was 24.2
+    degrees.</p>
 
-import matplotlib.pyplot as plt
+<p>Now, look at the bar graph - it shows a temperature change from one year to another.
+    And while it's clear that the temperature went up a few degrees, you can't clearly see
+    exactly how much or precisely what those temperatures are.</p>
+<p><img width="75%" src="https://github.com/alanjones2/12Visuals/raw/main/images/1-bar.png">
+</p>
 
-#Set up variables
-years = ['2012','2022']
-temps = [24.2,27.2]
-caption = f"The maximum temperature in July 2022 was {temps[1]}°C"
-caption2 = f"That's {temps[1]-temps[0]}° up from 2012"
+<p>So, let's see how some text only visuals can give us a better idea of what is going on.</p>
 
-fig2, ax2 = plt.subplots(figsize=(5,1))
+<p> The code below is a Mathplotlib chart but with no figure plotted in it - we simply
+    position text in the right places using <code>ax.text()</code>, where the first two parameters are the x/y
+    coordinates.
+    We turn of the axes, ticks etc. with the statement <code>ax3.axis('off')</code>, so that we end up with just the text.
 
-ax2.text(0, 0.9, temps[1],
-verticalalignment='top', horizontalalignment='left',
-color='red', fontsize=18, fontweight = 'bold')
+</p>
+<p>
+    Run the code below to see the figure that we have created and feel free to change some of the
+    code to achieve a different effect (maybe the font size, colors or x/y coordinates).
+    (Remember, to run the code click the green play button at
+    the bottom right.)
+</p>
 
-ax2.text(0.2, 0.9, caption,
-verticalalignment='top', horizontalalignment='left',
-color='Black', fontsize=10)
 
-ax2.text(0.2, 0.55, caption2,
-verticalalignment='top', horizontalalignment='left',
-color='darkgrey', fontsize=6)
+<py-repl id="text1" output="output1" stderr="err-div1">
 
-ax2.axis('off')
-fig2
+    import matplotlib.pyplot as plt
 
-                    </py-repl>
-                </div>
-                <div class = "col-sm-5">
-                    <div id="output1" class="border border-info pt-4 pb-4 m-1"></div>
-                    <div id="err-div1" class="m-1"></div>
-                    <button type="button" class="btn btn-info m-1" onclick="document.getElementById('output1').innerHTML='';
+    #Set up variables
+    years = ['2012','2022']
+    temps = [24.2,27.2]
+    caption = f"The maximum temperature in July 2022 was {temps[1]}°C"
+    caption2 = f"That's {temps[1]-temps[0]}° up from 2012"
+
+    fig2, ax2 = plt.subplots(figsize=(5,1))
+
+    ax2.text(0, 0.9, temps[1],
+    verticalalignment='top', horizontalalignment='left',
+    color='red', fontsize=18, fontweight = 'bold')
+
+    ax2.text(0.2, 0.9, caption,
+    verticalalignment='top', horizontalalignment='left',
+    color='Black', fontsize=10)
+
+    ax2.text(0.2, 0.55, caption2,
+    verticalalignment='top', horizontalalignment='left',
+    color='darkgrey', fontsize=6)
+
+    ax2.axis('off')
+    fig2
+
+</py-repl>
+
+
+<div id="output1" class="border border-info pt-4 pb-4 m-1"></div>
+<div id="err-div1" class="m-1"></div>
+<button type="button" class="btn btn-secondary mt-4" onclick="document.getElementById('output1').innerHTML='';
                             document.getElementById('err-div1').innerHTML='';">
-                        Clear Output
-                    </button>
-                </div>
+    Clear Output
+</button>
 
-            </div>
-            <p>Here is a different version.</p>
-            <div class="row">
+<div class="mt-4 mb-4">Here is a different version which is a bit bolder and more eye-catching than the previous one.</div>
 
-                <div class="col-sm-7">
+<py-repl id="my-repl2" button="True" output="output2" stderr="err-div2">
 
+    import matplotlib.pyplot as plt
 
+    #Set up variables
+    years = ['2012','2022']
+    temps = [24.2,27.2]
+    caption = f"The maximum temperature in July 2022 was {temps[1]}°C"
+    caption2 = f"That's {temps[1]-temps[0]}° up from 2012"
 
-                    <py-repl id="my-repl2" button="True" output="output2" stderr="err-div2">
+    fig3, ax3 = plt.subplots(figsize=(3,2))
 
-import matplotlib.pyplot as plt
+    ax3.text(0.5, 0.9, temps[1],
+    verticalalignment='top', horizontalalignment='center',
+    color='darkblue', fontsize=64, fontweight = 'bold')
 
-#Set up variables
-years = ['2012','2022']
-temps = [24.2,27.2]
-caption = f"The maximum temperature in July 2022 was {temps[1]}°C"
-caption2 = f"That's {temps[1]-temps[0]}° up from 2012"
+    ax3.text(0.5, 0.3, caption,
+    verticalalignment='top', horizontalalignment='center',
+    color='blue', fontsize=8)
 
-fig3, ax3 = plt.subplots(figsize=(3,2))
+    ax3.text(0.5, 0.2, caption2,
+    verticalalignment='top', horizontalalignment='center',
+    color='lightblue', fontsize=6)
 
-ax3.text(0.5, 0.9, temps[1],
-        verticalalignment='top', horizontalalignment='center',
-        color='darkblue', fontsize=64, fontweight = 'bold')
+    ax3.axis('off')
 
-ax3.text(0.5, 0.3, caption,
-        verticalalignment='top', horizontalalignment='center',
-        color='blue', fontsize=8)
+    fig3
 
-ax3.text(0.5, 0.2, caption2,
-        verticalalignment='top', horizontalalignment='center',
-        color='lightblue', fontsize=6)
+</py-repl>
+</div>
 
-ax3.axis('off')
-
-fig3
-            
-                </py-repl>
-                </div>
-                <div class = "col-sm-5">
-                    <div id="output2" class="border border-info pt-4 pb-4 m-1"></div>
-                    <div id="err-div2" class="m-4"></div>
-                    <button type="button" class="btn btn-info m-1" onclick="document.getElementById('output2').innerHTML='';
+<div id="output2" class="border border-info pt-4 pb-4 m-1"></div>
+<div id="err-div2" class="m-4"></div>
+<button type="button" class="btn btn-secondary mt-4" onclick="document.getElementById('output2').innerHTML='';
                         document.getElementById('err-div2').innerHTML='';">
-                        Clear Output
-                    </button>
-                </div>
-
-            </div>
-            <div>
-                <p>This is a bit bolder and more eye-catching than the previous one.</p>
-                <p> But let's move on to the next visual</p>
-            </div>       
+    Clear Output
+</button>
 
 
+</div>
+<div class="mt-4">
+    <p>Again feel free to change the code and see what happens when you run it. You could change the font sizes
+        alignment or colours, perhaps.
+    </p>
+    <p> When you are happy, move on to the next lesson by clicking on the next menu item.</p>
+</div>

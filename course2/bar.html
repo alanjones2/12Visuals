@@ -1,19 +1,47 @@
 <h2>Bar charts</h2>
-<p>CNK suggests that bar charts are often avoided because they are common. But because they are common, they are easily understood by your audience, meaning that they spend less brain power interpreting your graphics and more on reading the data. So, we should embrace bar charts as a visualiztion when appropriate not avoid them.</p>
-<p>They are also simple to create as they are included in most visualization libraries.</p>
-<p>CNK divides bar charts into 4 categories, vertical, horizontal, stacked vertical amd stacked horizontal, and we will look at them in turn.</p>
-<p>But first a word about ...</p>
-<p><img alt="" src="https://github.com/alanjones2/12Visuals/raw/main/images/zerobaselinebad.png"></p>
-<p><img alt="" src="https://github.com/alanjones2/12Visuals/raw/main/images/zerobaselinegood.png"></p>
-<p>We are going to use a medals table for the 2022 Winter Olypics as our data for the various bar charts that we will look at. So here is the preliminary code that we will need.</p>
+<p>CNK suggests that bar charts are often avoided because they are common. But because they are common, they are easily
+    understood by your audience, meaning that they spend less brain power interpreting your graphics and more on reading
+    the data. So, we should embrace bar charts as a visualiztion when appropriate not avoid them.</p>
+<p>Bar charts are also simple to create as they are included in most visualization libraries.</p>
+<p>CNK divides bar charts into 4 categories, vertical, horizontal, stacked vertical amd stacked horizontal, and we will
+    look at them in turn.</p>
+<p>But first a word about baselines.</p>
+<p> CNK insists that all bar charts should have a zero baseline, otherwise they risk being misleading or, more
+    seriously, manipulative.
+</p>
+<p>An example of this, CNK brings to our attention a bar chart published by Fox News during the presidency of Barack
+    Obama. They were considering what would happen if the tax reforms of Obama’s predecessor, George W. Bush, were
+    allowed to expire.
+</p>
+<p>The reality was that the top rate of tax would increase from 35% to 39.6% — that’s an absolute increase of 4.6% or a
+    relative rise of about 13%.
+</p>
+<p>The graph looked something like the one of the left which has a baseline starting at 34%, whereas the one on the right gives a much better representation of the truth:</p>
+<div class="row">
+    <div class="col-sm-6">
+        <img  width = "100%" src="https://github.com/alanjones2/12Visuals/raw/main/images/zerobaselinebad.png">
+    </div>
+    <div class="col-sm-6">
+        <img width = "100%" src="https://github.com/alanjones2/12Visuals/raw/main/images/zerobaselinegood.png">
+    </div>
+</div>
+
+<p>There is no real excudse for this sort of thing. The left hand graph is completely misleading. 
+    So, unless there is a very good reason, start your bar charts at zero. </p>
+
+    <h3>Data</h3>
+
+<p>We are going to use a medals table for the 2022 Winter Olympics as our data for the various bar charts that we will
+    look at. So here is the preliminary code that we will need.</p>
 <p>```` Python
-import streamlit as st
-import pandas as pd
-import matplotlib.pyplot as plt</p>
-<p>medals =  pd.read_csv('data/2022WinterOlympics.csv')
-````</p>
+    import streamlit as st
+    import pandas as pd
+    import matplotlib.pyplot as plt</p>
+<p>medals = pd.read_csv('data/2022WinterOlympics.csv')
+    ````</p>
 <p><img alt="" src="https://github.com/alanjones2/12Visuals/raw/main/images/medalstable.png"></p>
-<p><em>Medals table for the top 4 countries at the 2022 Winter Olympics - data source, <a href="https://en.wikipedia.org/wiki/2022_Winter_Olympics">Wikipedia</a>, image by author</em></p>
+<p><em>Medals table for the top 4 countries at the 2022 Winter Olympics - data source, <a
+            href="https://en.wikipedia.org/wiki/2022_Winter_Olympics">Wikipedia</a>, image by author</em></p>
 <h2>7. Vertical bar</h2>
 <p><code>Python
 fig, ax = plt.subplots()
@@ -24,19 +52,22 @@ st.pyplot(fig)</code></p>
 fig, ax = plt.subplots()
 medals.plot.bar(x='Country', ax=ax)
 st.pyplot(fig)</code>
-<img alt="" src="https://github.com/alanjones2/12Visuals/raw/main/images/top5barvert.png"></p>
+    <img alt="" src="https://github.com/alanjones2/12Visuals/raw/main/images/top5barvert.png">
+</p>
 <p>```Python
-fig, ax = plt.subplots()
-medals.plot.bar(x='Country', y = ['Gold','Silver','Bronze'],ax=ax)
-st.pyplot(fig)
-````
-<img alt="" src="https://github.com/alanjones2/12Visuals/raw/main/images/7gsbvertbar.png"></p>
+    fig, ax = plt.subplots()
+    medals.plot.bar(x='Country', y = ['Gold','Silver','Bronze'],ax=ax)
+    st.pyplot(fig)
+    ````
+    <img alt="" src="https://github.com/alanjones2/12Visuals/raw/main/images/7gsbvertbar.png">
+</p>
 <h2>8. Horizontal bar</h2>
 <p><code>Python
 fig, ax = plt.subplots()
 medals.plot.barh(x='Country', ax=ax)
 st.pyplot(fig)</code>
-<img alt="" src="https://github.com/alanjones2/12Visuals/raw/main/images/top5barhoriz.png"></p>
+    <img alt="" src="https://github.com/alanjones2/12Visuals/raw/main/images/top5barhoriz.png">
+</p>
 <h2>9. Stacked vertical bar</h2>
 <p><code>Python
 fig, ax = plt.subplots()

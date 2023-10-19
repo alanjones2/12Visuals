@@ -8,13 +8,19 @@
         .py-repl-run-button {
             opacity: 1;
         }
+
+        #output-box {
+            border: 1, 1, 1, 1;
+            margin: 0, 4, 0, 4;
+            padding: 4, 4, 4, 4
+        }
     </style>
 
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
     <script src='https://cdn.plot.ly/plotly-latest.min.js'></script>
 </head>
 
-<body class="p5 text-dark" style="font-size: 1.25rem">
+<body class="p5 text-dark">
 
     <py-config>
         packages = [ "pandas", "plotly", "matplotlib", "seaborn"]
@@ -33,8 +39,8 @@
         import utils
     </py-script>
 
-    <div class="p-4 m-4 bg-light">
-        <h1 class="display-3">12 Essential Visuals</h1>
+    <div class="p-4 m-4 text-white bg-secondary ">
+        <h1 class="display-4">12 Essential Visuals</h1>
         <h3 class="pl-2">and how to implement them<span class="text-secondary"> - an interactive course</span></h3>
 
         <span class="lead">
@@ -43,87 +49,90 @@
             <i>Cole Nussbaumer Knaflic in </i>
 
             <a href="https://amzn.to/3dJlMaS" target="_blank">
-                <i>Storytelling with Data, a data visualization guide
-                    for business professionals
-                </i>
+                <b><i class="text-light">Storytelling with Data, a data visualization guide
+                        for business professionals
+                    </i></b>
             </a>(<i>affliate link</i>)
         </span>
     </div>
+    <div class="container">
+        <div class="row">
+            <div class="col p-4 mb-4 bg-white">
+                <div class="row">
+                    <!-- menu-->
+                    <h3>Contents</h3>
+                </div>
+                <div class="row">
 
-    <div class="row">
-        <div class="col-sm-2 p-2 ml-4 mr-4 mb-4 bg-white border-left">
-            <div class="row ml-4">
-                <!-- menu-->
-                <h3>Contents</h3>
+                    <ul class="nav flex-column">
+                        <li class="nav-item">
+                            <a class="nav-link active" onclick="getContent(0)" href="#">Introduction</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link active" onclick="getContent(1)" href="#">Plain Text</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link active" onclick="getContent(2)" href="#">Tables</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link active" onclick="getContent(3)" href="#">Heatmaps</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link active" onclick="getContent(4)" href="#">Scatter Plots</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link active" onclick="getContent(5)" href="#">Line Plots</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link active" onclick="getContent(6)" href="#">Slope Diagrams</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link active" onclick="getContent(7)" href="#">Bar Charts</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link active" onclick="getContent(8)" href="#">Waterfall Charts</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link active" onclick="getContent(9)" href="#">Square Area Diagrams</a>
+                        </li>
+                    </ul>
+
+
+                    <span class="mt-2 mb-2 pt-4 pb-4 bg-white border-top border-bottom">
+                        <p style="font-size:75%">Advertisement</p>
+                        <div class="mb-4"> Storytelling with Data and related books by <br /><b>Cole Nussbaumer
+                                Knaflic</b>:</div>
+                        <a class="pb-4"
+                            href="https://www.amazon.com/Storytelling-Data-Visualization-Business-Professionals/dp/1119002257?crid=1MY1RXSF4T9G3&keywords=knaflic&qid=1670776183&s=books&sprefix=knaflic%2Cstripbooks-intl-ship%2C158&sr=1-2&linkCode=li3&tag=alanjones01-20&linkId=b74126a342676875822ebe699d5be0f9&language=en_US&ref_=as_li_ss_il"
+                            target="_blank"><img border="0"
+                                src="//ws-na.amazon-adsystem.com/widgets/q?_encoding=UTF8&ASIN=1119002257&Format=_SL250_&ID=AsinImage&MarketPlace=US&ServiceVersion=20070822&WS=1&tag=alanjones01-20&language=en_US"></a><img
+                            src="https://ir-na.amazon-adsystem.com/e/ir?t=alanjones01-20&language=en_US&l=li3&o=1&a=1119002257"
+                            width="1" height="1" border="0" alt=""
+                            style=" border:none !important; margin:0px !important;" />
+                        <a class="pb-4"
+                            href="https://www.amazon.com/Storytelling-Data-Cole-Nussbaumer-Knaflic/dp/1119621496?pd_rd_w=JoIxj&content-id=amzn1.sym.7f0cf323-50c6-49e3-b3f9-63546bb79c92&pf_rd_p=7f0cf323-50c6-49e3-b3f9-63546bb79c92&pf_rd_r=CCM82J86MZ3DXR33RQBC&pd_rd_wg=Rcu9K&pd_rd_r=58153b8b-857f-495b-a09e-2d45ccadb4af&pd_rd_i=1119621496&psc=1&linkCode=li3&tag=alanjones01-20&linkId=ada8e72024c73a3a755c589bb276e326&language=en_US&ref_=as_li_ss_il"
+                            target="_blank"><img border="0"
+                                src="//ws-na.amazon-adsystem.com/widgets/q?_encoding=UTF8&ASIN=1119621496&Format=_SL250_&ID=AsinImage&MarketPlace=US&ServiceVersion=20070822&WS=1&tag=alanjones01-20&language=en_US"></a><img
+                            src="https://ir-na.amazon-adsystem.com/e/ir?t=alanjones01-20&language=en_US&l=li3&o=1&a=1119621496"
+                            width="1" height="1" border="0" alt=""
+                            style="border:none !important; margin:0px !important;" />
+                        <a class="pb-4"
+                            href="https://www.amazon.com/dp/1394160305?psc=1&pd_rd_i=1394160305&pd_rd_w=RqglL&content-id=amzn1.sym.88097cb9-5064-44ef-891b-abfacbc1c44b&pf_rd_p=88097cb9-5064-44ef-891b-abfacbc1c44b&pf_rd_r=NF03HVN3AM1DB9WJA82G&pd_rd_wg=cg0Om&pd_rd_r=630d86df-99af-4479-bf64-5f429f1e61c4&s=books&sp_csd=d2lkZ2V0TmFtZT1zcF9kZXRhaWw&spLa=ZW5jcnlwdGVkUXVhbGlmaWVyPUEyNFEwVzAwMTFFTkZTJmVuY3J5cHRlZElkPUExMDM0NzA0MjRMN1FHNFdUWUVXNiZlbmNyeXB0ZWRBZElkPUEwMzYyMzAxM1FLNVFGUFVQMzIyVyZ3aWRnZXROYW1lPXNwX2RldGFpbCZhY3Rpb249Y2xpY2tSZWRpcmVjdCZkb05vdExvZ0NsaWNrPXRydWU%3D&linkCode=li3&tag=alanjones01-20&linkId=6836246ed71751aa4b6890c0ebe4afe0&language=en_US&ref_=as_li_ss_il"
+                            target="_blank"><img border="0"
+                                src="//ws-na.amazon-adsystem.com/widgets/q?_encoding=UTF8&ASIN=1394160305&Format=_SL250_&ID=AsinImage&MarketPlace=US&ServiceVersion=20070822&WS=1&tag=alanjones01-20&language=en_US"></a><img
+                            src="https://ir-na.amazon-adsystem.com/e/ir?t=alanjones01-20&language=en_US&l=li3&o=1&a=1394160305"
+                            width="1" height="1" border="0" alt=""
+                            style="border:none !important; margin:0px !important;" />
+                    </span>
+
+
+
+                </div>
             </div>
-            <div class="row ml-4">
+            <div class="col-sm-9 p-4 mb-4 bg-white">
 
-                <ul class="nav flex-column">
-                    <li class="nav-item">
-                        <a class="nav-link active" onclick="getContent(0)" href="#">Introduction</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link active" onclick="getContent(1)" href="#">Plain Text</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link active" onclick="getContent(2)" href="#">Tables</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link active" onclick="getContent(3)" href="#">Heatmaps</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link active" onclick="getContent(4)" href="#">Scatter Plots</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link active" onclick="getContent(5)" href="#">Line Plots</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link active" onclick="getContent(6)" href="#">Slope Diagrams</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link active" onclick="getContent(7)" href="#">Bar Charts</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link active" onclick="getContent(8)" href="#">Waterfall Charts</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link active" onclick="getContent(9)" href="#">Square Area Diagrams</a>
-                    </li>
-                </ul>
-
-
-                <span class="p-4 m-2 bg-white shadow">
-                    <p style="font-size:75%">Advertisement</p>
-                    <div class="mr-4 mb-4"> Storytelling with Data and related books by <br /><b>Cole Nussbaumer
-                            Knaflic</b>:</div>
-                    <a class="pb-4"
-                        href="https://www.amazon.com/Storytelling-Data-Visualization-Business-Professionals/dp/1119002257?crid=1MY1RXSF4T9G3&keywords=knaflic&qid=1670776183&s=books&sprefix=knaflic%2Cstripbooks-intl-ship%2C158&sr=1-2&linkCode=li3&tag=alanjones01-20&linkId=b74126a342676875822ebe699d5be0f9&language=en_US&ref_=as_li_ss_il"
-                        target="_blank"><img border="0"
-                            src="//ws-na.amazon-adsystem.com/widgets/q?_encoding=UTF8&ASIN=1119002257&Format=_SL250_&ID=AsinImage&MarketPlace=US&ServiceVersion=20070822&WS=1&tag=alanjones01-20&language=en_US"></a><img
-                        src="https://ir-na.amazon-adsystem.com/e/ir?t=alanjones01-20&language=en_US&l=li3&o=1&a=1119002257"
-                        width="1" height="1" border="0" alt="" style="border:none !important; margin:0px !important;" />
-                    <a class="pb-4"
-                        href="https://www.amazon.com/Storytelling-Data-Cole-Nussbaumer-Knaflic/dp/1119621496?pd_rd_w=JoIxj&content-id=amzn1.sym.7f0cf323-50c6-49e3-b3f9-63546bb79c92&pf_rd_p=7f0cf323-50c6-49e3-b3f9-63546bb79c92&pf_rd_r=CCM82J86MZ3DXR33RQBC&pd_rd_wg=Rcu9K&pd_rd_r=58153b8b-857f-495b-a09e-2d45ccadb4af&pd_rd_i=1119621496&psc=1&linkCode=li3&tag=alanjones01-20&linkId=ada8e72024c73a3a755c589bb276e326&language=en_US&ref_=as_li_ss_il"
-                        target="_blank"><img border="0"
-                            src="//ws-na.amazon-adsystem.com/widgets/q?_encoding=UTF8&ASIN=1119621496&Format=_SL250_&ID=AsinImage&MarketPlace=US&ServiceVersion=20070822&WS=1&tag=alanjones01-20&language=en_US"></a><img
-                        src="https://ir-na.amazon-adsystem.com/e/ir?t=alanjones01-20&language=en_US&l=li3&o=1&a=1119621496"
-                        width="1" height="1" border="0" alt="" style="border:none !important; margin:0px !important;" />
-                    <a class="pb-4"
-                        href="https://www.amazon.com/dp/1394160305?psc=1&pd_rd_i=1394160305&pd_rd_w=RqglL&content-id=amzn1.sym.88097cb9-5064-44ef-891b-abfacbc1c44b&pf_rd_p=88097cb9-5064-44ef-891b-abfacbc1c44b&pf_rd_r=NF03HVN3AM1DB9WJA82G&pd_rd_wg=cg0Om&pd_rd_r=630d86df-99af-4479-bf64-5f429f1e61c4&s=books&sp_csd=d2lkZ2V0TmFtZT1zcF9kZXRhaWw&spLa=ZW5jcnlwdGVkUXVhbGlmaWVyPUEyNFEwVzAwMTFFTkZTJmVuY3J5cHRlZElkPUExMDM0NzA0MjRMN1FHNFdUWUVXNiZlbmNyeXB0ZWRBZElkPUEwMzYyMzAxM1FLNVFGUFVQMzIyVyZ3aWRnZXROYW1lPXNwX2RldGFpbCZhY3Rpb249Y2xpY2tSZWRpcmVjdCZkb05vdExvZ0NsaWNrPXRydWU%3D&linkCode=li3&tag=alanjones01-20&linkId=6836246ed71751aa4b6890c0ebe4afe0&language=en_US&ref_=as_li_ss_il"
-                        target="_blank"><img border="0"
-                            src="//ws-na.amazon-adsystem.com/widgets/q?_encoding=UTF8&ASIN=1394160305&Format=_SL250_&ID=AsinImage&MarketPlace=US&ServiceVersion=20070822&WS=1&tag=alanjones01-20&language=en_US"></a><img
-                        src="https://ir-na.amazon-adsystem.com/e/ir?t=alanjones01-20&language=en_US&l=li3&o=1&a=1394160305"
-                        width="1" height="1" border="0" alt="" style="border:none !important; margin:0px !important;" />
-                </span>
-
-
-
-            </div>
-        </div>
-        <div class="col-sm-8 p-4 ml-4 mr-4 mb-4 bg-white">
-
-            <div id="content"></div>
-            <!--
+                <div id="content"></div>
+                <!--
             <ul class="navbar navbar-expand-sm m-4 border" style="background-color: lightgray;padding-left: 40%;">
                 <li class="nav-item">
                   <a class="nav-link active" onclick="previousPage()" href="#">< Previous</a>
@@ -136,6 +145,7 @@
                 </li>
             </ul>
             -->
+            </div>
         </div>
     </div>
     <script>
@@ -182,14 +192,13 @@
     </script>
 
     <footer class="text-right text-secondary p-4 m-4">
-        <i>Please note that all the software in these articles is written for educational purposes and should
-            not necessarily be
-            considered suitable for production code</i>
+        <i>Please note that the software in these articles is written for educational purposes and may not be
+            suitable for production code</i>
         <br />
         <i>This site contains affliate links. If you purchase an item through such a link I may get a commision
-        but at no cost to you. As an Amazon Associate, I earn from qualifying purchases.</i>
+            but at no cost to you. As an Amazon Associate, I earn from qualifying purchases.</i>
         <br />
-        <i class="m-4">&copy; 2022, 2023, Alan Jones</i> &nbsp;
+        <i class="mt-4">&copy; 2022, 2023, Alan Jones</i>
 
     </footer>
 
