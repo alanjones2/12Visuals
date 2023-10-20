@@ -34,15 +34,24 @@
         [[fetch]]
         from = "./utils.py"
         to_file = "./utils.py"
+        [[fetch]]
+        from = "./data/2022WinterOlympics.csv"
+        to = "./2022WinterOlympics.csv"
     </py-config>
     <py-script>
         import utils
     </py-script>
 
     <div class="p-4 m-4 text-white bg-secondary ">
-        <h1 class="display-4">12 Essential Visuals</h1>
-        <h3 class="pl-2">and how to implement them<span class="text-secondary"> - an interactive course</span></h3>
-
+        <div class="row">
+            <div class="col-md-auto">
+                <h1 class="Display-4">12 Essential Visuals</h1>
+            </div>
+            <div class="col">
+                <h3 class="pt-4 text-white"> and how to implement them<span class="text-info"> - an interactive course</span>
+                </h3>
+            </div>
+        </div>
         <span class="lead">
             "When I look back over the 150+ visuals that I created for workshops and consulting projects
             in the past year, there were only a dozen different types of visuals that I used",
@@ -191,7 +200,7 @@
 
     </script>
 
-    <footer class="text-right text-secondary p-4 m-4">
+    <footer class="text-right text-secondary p-4 m-4 border-top">
         <i>Please note that the software in these articles is written for educational purposes and may not be
             suitable for production code</i>
         <br />
