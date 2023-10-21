@@ -144,21 +144,55 @@
 
                 <div id="content"></div>
                 <!--
-            <ul class="navbar navbar-expand-sm m-4 border" style="background-color: lightgray;padding-left: 40%;">
-                <li class="nav-item">
-                  <a class="nav-link active" onclick="previousPage()" href="#">< Previous</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link active" onclick="firstPage()" href="#">Back to start</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link active" onclick="nextPage()" href="#">Next ></a>
-                </li>
-            </ul>
-            -->
-            </div>
-        </div>
-    </div>
+                            <ul class="navbar navbar-expand-sm m-4 border" style="background-color: lightgray;padding-left: 40%;">
+                                <li class="nav-item">
+                                  <a class="nav-link active" onclick="previousPage()" href="#">< Previous</a>
+                                </li>
+                                <li class="nav-item">
+                                    <a class="nav-link active" onclick="firstPage()" href="#">Back to start</a>
+                                </li>
+                                <li class="nav-item">
+                                    <a class="nav-link active" onclick="nextPage()" href="#">Next ></a>
+                                </li>
+                            </ul>
+                            -->
+                <ul class="list-group list-group-horizontal" style="list-style-type: none;">
+                    <li class="nav-item">
+                        <a class="nav-link active" onclick="getContent(0)" href="#">Introduction</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link active" onclick="getContent(1)" href="#">Plain Text</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link active" onclick="getContent(2)" href="#">Tables</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link active" onclick="getContent(3)" href="#">Heatmaps</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link active" onclick="getContent(4)" href="#">Scatter Plots</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link active" onclick="getContent(5)" href="#">Line Plots</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link active" onclick="getContent(6)" href="#">Slope Diagrams</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link active" onclick="getContent(7)" href="#">Bar Charts</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link active" onclick="getContent(8)" href="#">Waterfall Charts</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link active" onclick="getContent(9)" href="#">Square Area Diagrams</a>
+                    </li>
+                </ul>
+                
+                
+                </div>
+                </div>
+                </div>
     <script>
 
         contentIndex = 0;
