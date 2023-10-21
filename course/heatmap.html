@@ -1,4 +1,4 @@
-            <h2>3. Heatmap</h2>
+            <h2>3. Heatmaps</h2>
             <p>
                 A heatmap is a figure that uses colour rather than numbers to highlight value differences in
                 a table.
@@ -19,29 +19,11 @@
 
                 Run the code to see the heatmap.
             </p>
-            <div class="row">
-                <div class="col-sm-7">
-                    <py-repl id="my-repl" std-out="output4" std-err="output4">
-import pandas as pd
-import matplotlib.pyplot as plt
 
-gwdec = pd.read_csv('./tempbydecade.csv', delimiter=' ')
-gwdec=gwdec.set_index('Year')
+            <py-script>
+                utils.codeElement("heatmap1", codefile="./code/heatmap1.py")
+            </py-script>
+            <div id="heatmap1"></div>
+            
 
-import seaborn as sns
-fig, ax = plt.subplots()
-sns.heatmap(gwdec)
-fig
-                    </py-repl>
-                </div>
-                <div class="col-sm-5">
-                    <div id="output4" class="p-4"></div>
-                    <div id="err-div4"></div>
-                    <button type="button" class="btn btn-info" onclick="document.getElementById('output4').innerHTML='';
-                        document.getElementById('err-div4').innerHTML='';">
-                        Clear Output
-                    </button>
-                </div>
-            </div>
-
-            <p>You can achieve a similar chart using the <code>imshow()</code> function in matplotlib.</p>
+            <p>You can achieve a similar chart using the <code>imshow()</code> function in Matplotlib.</p>

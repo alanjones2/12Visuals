@@ -8,15 +8,19 @@ import plotly.graph_objects as go
 
 fig = go.Figure(data=[
                 go.Table(header=dict(values=['Year', 'Temperature'],
+                                font_color='white',
                                 line_color='darkslategray',
-                                fill_color='lightskyblue',
+                                fill_color='darkslategray',
                                 align='left'),
                         cells=dict(values=[temps['Year'], temps['Temperature']],
                                 line_color='darkslategray',
-                                fill_color='lightcyan',
+                                fill_color='lightgrey',
+                                font_color='black',
                                 align='left')
-                                )])
+                        )
+                     ],
+                )
                     
+fig.update_layout(width=500, height=250)
 
-
-fig.show()
+fig

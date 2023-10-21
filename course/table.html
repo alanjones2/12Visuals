@@ -1,86 +1,51 @@
-            <h2>2. Table</h2>
-            <p>A table can be a suitable visual for showing data to a varied audience each of whom are
-                interested in a particular row or column.</p>
-            <p>Matplotlib doesn't support a standalone table, however, for those using 
-            Streamlit there are two methods for displaying tables, <code>st.table()</code> and
-                <code>st.dataframe()</code>.
-            </p>
-            <p>
-                If you are using Jupyter Notebooks then just typing the name of a Pandas 
-                dataframe will give a good rendition of a table. 
-            </p>
-            <p>
-                Here, we are using PyScript which can render a simple version of a table as we can see below. In this environment
-                a better version could be created using a combination of Python and HTML (but we won't go into that here).
-            </p>
-            <p>Using the same data as above, here is the code for displaying the data as a table in PyScript. </p>
-            <div class="row">
-                <div class="col-sm-7">
+<h2>2. Tables</h2>
+<p>A table can be a suitable visual for showing data to a varied audience each of whom are
+    interested in a particular row or column.</p>
+<p>Matplotlib doesn't support a standalone table, however, for those using
+    Streamlit there are two methods for displaying tables, <code>st.table()</code> and
+    <code>st.dataframe()</code>.
 
-                    <py-repl id="my-repl3" output="output3" stderr="output3">
-import pandas as pd
-temps = pd.DataFrame()
-temps['Year'] = ('2012', '2022')
-temps['Temperature'] = (24.2,27.2)
-temps
-
-import plotly.graph_objects as go
-
-fig = go.Figure(data=[go.Table(header=dict(values=['Year', 'Temperature']),
-                 cells=dict(values=[temps['Year'], temps['Temperature']]))
-                     ])
-
-#fig.update_layout(template="none")
-
-fig
-                </py-repl>
-                </div>
-                <div class="col-sm-5">
-                    <div id="output3" class="border border-info  pt-4 pb-4 m-1"></div>
-                    <div id="err-div3" class="m-4"></div>
-                    <button type="button" class="btn btn-secondary m-1" onclick="document.getElementById('output3').innerHTML='';
-                        document.getElementById('err-div3').innerHTML='';">
-                        Clear Output
-                    </button>
-                </div>
-            </div>
+<p>
+    If you are using Jupyter Notebooks then just typing the name of a Pandas
+    dataframe will give a good rendition of a table.
+</p>
+<div class="row">
+    <div class="col">
+        <i>Streamlit dataframe:</i>
+        <img src="https://github.com/alanjones2/12Visuals/raw/main/images/dataframe.png">
+    </div>
+    <div class="col">
+        <i>Jupyter dataframe: </i>
+        <img src="https://github.com/alanjones2/12Visuals/raw/main/images/jupytertable.png">
+    </div>
+</div>
+<p>
+    Unfortunately we can't demonstrate either of those options here but, instead, we can use Plotly.
+    Most Python environments support Plotly and we can use the Plotly Graphic Objects library to display a table. 
+    The Plotly library is quite flexible, we can adjust the way the table looks and its colour scheme, for example. Here are two examples.
+    The first is a simple table that uses the default values and the second shows how you can change
+    the table's appearance.
+</p>
+<p>
+    The data is the same as were used in the <i>Text</i> section. It's just a couple of temperature recorded over two years.
+</p>
 
 
+<py-script>
+    utils.codeElement("table1", codefile="./code/plotlytable1.py")
+</py-script>
+<div id="table1"></div>
+<p>
+    Here is a slightly more complicated version of the same fugure. Here we adjust the colour scheme using additional
+    parameters.
+    The code is fairly self-explanatory.
+</p>
+<py-script>
+    utils.codeElement("table2", codefile="./code/plotlytable2.py")
+</py-script>
+<div id="table2"></div>
 
-
-                    <py-repl src = "./code/plotlytable2.py" id="my-repl4" output="output4" stderr="output4">
-
-                </py-repl>
-                </div>
-                <div class="col-sm-5">
-                    <div id="output4" class="border border-info  pt-4 pb-4 m-1"></div>
-                    <div id="err-div4" class="m-4"></div>
-                    <button type="button" class="btn btn-secondary m-1" onclick="document.getElementById('output4').innerHTML='';
-                        document.getElementById('err-div4').innerHTML='';">
-                        Clear Output
-                    </button>
-                </div>
-            </div>
-
-
-
-
-
-            <p>The Streamlit and Jupyter representations give a rather better result, e.g.</p>
-
-            <div class="row">
-                <div class="col-sm-4 p-4 m-4 bg-white">
-                    <p><i >Streamlit dataframe:</i> 
-                    <img src="https://github.com/alanjones2/12Visuals/raw/main/images/dataframe.png">
-                    </p>
-                </div>
-
-                <div class="col-sm-4 p-4 m-4 bg-white">
-                    <p><i>Jupyter dataframe: </i>
-                        <img src="https://github.com/alanjones2/12Visuals/raw/main/images/jupytertable.png">
-                    </p>
-                </div>
-            </div>
-            Unfortunately, we cannot run Streamlit or Jupyter, here, but we can move on to the other charts that can
-            be produced using Matplotlib.
-
+<p>
+    Tables are very useful (although not terrible exiting), we can now move on to more graphical representations of our
+    data.
+</p>

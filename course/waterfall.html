@@ -1,12 +1,159 @@
-<h2>11. Waterfall</h2>
-<p><code>Python
-a = ['Beginning HC','Hires','Transfers In','Transfers Out','Exits']
-b = [100,30,8,-12,-10]</code></p>
-<p><code>Python
-my_plot = waterfall_chart.plot(a, b, net_label = "Ending HC")
-st.pyplot(my_plot)</code>
-<img alt="" src="https://github.com/alanjones2/12Visuals/raw/main/images/waterfall1.png"></p>
-<p><code>Python
-my_plot = waterfall_chart.plot(a, b, net_label = "Ending HC", blue_color='blue',red_color='blue', green_color='blue')
-st.pyplot(my_plot)</code>
-<img alt="" src="https://github.com/alanjones2/12Visuals/raw/main/images/waterfall2.png"></p>
+<h2>11. Waterfall Charts</h2>
+
+<div>
+    The waterfall chart can be used to deconstruct a stacked
+    bar chart so we can concentrate on one part at a time. Also, a waterfall chart can track increases and decreases from a starting value to a final result. 
+</div>
+<div>
+    Waterfall charts are not often included as a standard part of visualization libraries, although, they are essentially stacked bars comprising two parts, the current value and an increment, or decrement.
+</div>
+<div>
+    The Python library waterfallcharts implements the waterfall chart using Matplotlib and is easy to use. Unfortunately we cannot use it in PyScript. So, instead I will present a heler function that draws waterfall charts using Plotly. 
+</div>
+<div>
+    I won't being going into how this function works but you can use the code as you wish and see an article on its use here:
+    <a href="https://towardsdatascience.com/how-to-build-waterfall-charts-with-plotly-graph-objects-a8354543c42e?sk=924681c2236a369a2cc8aabdaadcdbad" target="_blank"><i>How to Build Waterfall Charts with Plotly Graph Objects</i></a>.
+</div>
+<div>
+    Run the code below once and it will define the function that we will use later.
+</div>
+
+<py-repl id="waterfall1" output="waterfall1-output" stderr="waterfall1-output">
+    import plotly.graph_objects as go
+
+    def waterfall(labels, data, title="", annotation=None, 
+                  icolor="Green", dcolor="Red", 
+                  tcolor="Blue", ccolor='Dark Grey', 
+                  color=None, measure=None):
+        """
+        Create a waterfall chart using Plotly.
+    
+        Parameters:
+            labels (list): A list of labels for the data points.
+            data (list): A list of numerical values representing the data points.
+            title (str, optional): The title of the chart. Defaults to an empty string.
+            annotation (list, optional): A list of annotations for each data point. Defaults to None.
+            icolor (str, optional): Color for increasing values. Defaults to "Green".
+            dcolor (str, optional): Color for decreasing values. Defaults to "Red".
+            tcolor (str, optional): Color for the total value. Defaults to "Blue".
+            ccolor (str, optional): Connector line color. Defaults to 'Dark Grey'.
+            color (str, optional): Common color for all elements. Defaults to None.
+            measure (list, optional): A list specifying whether each data point is 'relative' or 'total'. Defaults to None.
+    
+        Returns:
+            plotly.graph_objs._figure.Figure: A Plotly Figure containing the waterfall chart.
+        """
+        # Set default measure values if not provided
+        if measure is None:
+            measure = ['relative'] * (len(labels) - 1)
+            measure.append('total')
+    
+        # Set default annotation values if not provided
+        if annotation is None:
+            annotation = data[:-1]
+            annotation.append(sum(data))
+    
+        # Set colors              
+        if color !=None:
+            icolor = dcolor = tcolor = ccolor = color
+        # Create the waterfall chart figure
+        fig = go.Figure(go.Waterfall(
+            orientation="v",
+            measure=measure,
+            textposition="outside",
+            text=annotation,
+            y=data,
+            x=labels,
+            connector={"line": {"color": ccolor}},
+            decreasing={"marker": {"color": dcolor}},
+            increasing={"marker": {"color": icolor}},
+            totals={"marker": {"color": tcolor}}
+        )).update_layout(
+            title=title
+        )
+    
+        return fig
+
+</py-repl>
+
+
+<div id="waterfall1-output" class="border p-4"></div>
+
+<button type="button" class="btn btn-secondary m-4" onclick="document.getElementById('waterfall1-output').innerHTML='';
+                                document.getElementById('waterfall1-output').innerHTML='';">
+    Clear Output
+</button>
+
+<div>
+    The chart that we will construct is based on one from <i>Storytelling with Data</i> and tracks the increase and decrease in personnel in a fictitious company. The data looks like this:
+</div>
+<div class="bg-light m-4 p-2 border">
+<code>
+    a = ['Beginning HC','Hires','Transfers In','Transfers Out','Exits']
+    b = [100,30,8,-12,-10]
+</code>
+</div>
+
+<div>
+    List <code>a</code> is a set of labels and <code>b</code> is a list of values that begins with the current headcount, and then lists increments or decrements from that initial value.
+</div>
+<div>
+    You can see the initial value and the changes due to the reasons described by the labels. A final value is also added.
+</div>
+
+
+
+
+
+
+<py-repl id="waterfall2" output="waterfall2-output" stderr="waterfall2-output">
+
+labels = ["Beginning HC", "Hires", "Transfers in", "Transfers out",  "Exits", "Ending HC"]
+data = [100, 30, 8, -12, -10, 0 ]
+title = "Headcount"
+
+fig = waterfall(labels,data, title)
+
+fig.update_layout(
+    width=800,
+    height=500
+)
+
+fig
+
+
+</py-repl>
+
+<div id="waterfall2-output" class="border p-4"></div>
+
+<button type="button" class="btn btn-secondary m-4" onclick="document.getElementById('waterfall2-output').innerHTML='';
+                                document.getElementById('waterfall2-output').innerHTML='';">
+    Clear Output
+</button>
+
+
+<div>
+    You might notice that there is a fair amount of redundancy in the visual encoding of the bars. The first bar and the positive changes are coloured green, the negative changes are red and the final bar is blue. But positive and negative changes are already distinguished by increasing the overall height or decreasing it. On top of that, there are numeric labels that show us the changes, too — and these are also colour-encoded.
+</div>
+<div>
+    If we prefer the function gives us the option of setting the colours of the various elements of the graph. Here all the elements are coloured blue.
+</div>
+
+<py-repl id="waterfall3" output="waterfall3-output" stderr="waterfall3-output">
+
+    fig = waterfall(labels,data, title, color = 'blue')
+    fig.update_layout(
+        width=800,
+        height=500
+    )
+    fig
+
+    </py-repl>
+    
+    
+    <div id="waterfall3-output" class="border p-4"></div>
+    
+    <button type="button" class="btn btn-secondary m-4" onclick="document.getElementById('waterfall3-output').innerHTML='';
+                                    document.getElementById('waterfall3-output').innerHTML='';">
+        Clear Output
+    </button>
